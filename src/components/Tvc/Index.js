@@ -4,12 +4,12 @@ import Mustache from 'mustache'
 
 export default class Tvc {
 	constructor() {
-		this.isStarOwner = window.localStorage.getItem('star') && window.localStorage.getItem('star') !== "undefined"
+		this.start = window.localStorage.getItem('star')
 	}
 
 	render(node) {        
         $(node).html(
-            Mustache.render(template, {isStarOwner: this.isStarOwner})
+            Mustache.render(template, {start: this.start})
         );
     }
 }

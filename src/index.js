@@ -93,10 +93,10 @@ import Create from './components/Create'
 
 
 	GOON.Tvc = (function(){
+
 		var tvc = $('.tvc');
 
 		var init = function(){
-			console.log('tvc initial..')
 
 			new Tvc().render('div.tvc');
 
@@ -114,7 +114,6 @@ import Create from './components/Create'
 		};
 
 		var bindEvents = function(){
-
 			
 		};
 
@@ -198,17 +197,17 @@ import Create from './components/Create'
 			wrap.on('click', '.action-show-star', function(e){
 				e.preventDefault()
 
-				var star = Action.getLocal('star')
+				new Animal().render('div.star-detail');
+				Action.showPanel('star-form');
 
-				new Animal(star).render('div.star-detail')
-				console.log(star)
-				if(star.star_count > 4){
-					// Action.showPanel('star-all-collected')
-					Action.getPrize();
-				}else{
-					Action.showPanel('star-form')
-				}
 				GOON.Tvc.hide();
+			})
+
+			// 去领取奖励
+			wrap.on('click', '.action-get-prize', function(e){
+				e.preventDefault();
+
+				Action.getPrize();
 			})
 
 			// 生成二维码, 分享给好友
@@ -222,21 +221,19 @@ import Create from './components/Create'
 			// 去选择
 			wrap.on('click', '.action-create-star', function(e){
 				e.preventDefault();
-				console.log('action-create button clicked...')
+
 				var isLogin = Action.checkAuth();
+				
 				if(isLogin){
-					console.log('user is login')
-					// show create panel
+					// 去选择神器 或者 查看神器
 					new Create().render('div.create-form')
 					Action.showPanel('create-form')
 					$('.create-form .selections').slick({
 						dots: true,
 						speed: 200
 					})
-					console.log('slick..')
-
 				}else{
-					// alert('请先登录')
+					// 去登录
 					new Login().render('div.login-form')
 					Action.showPanel('login-form')
 				}
@@ -245,20 +242,16 @@ import Create from './components/Create'
 			// 选择神器
 			wrap.on('click', '.action-create', function(e){
 				e.preventDefault();
-				console.log('action-create button clicked...')
 
 				var id = $('.create-form .selections').slick('slickCurrentSlide') + 1;
 				console.log(id)
 
 				Action.createStar(id);
-
-
 			})
 
 			// 登录
 			wrap.on('click', '.action-login', function(e){
 				e.preventDefault();
-				console.log('action-login button clicked...')
 
 				var loginForm = $('.login-form'),
 					data = {},
@@ -267,7 +260,7 @@ import Create from './components/Create'
 				data.email = loginForm.find("input[name=email]").val();
 				data.password = loginForm.find("input[name=password]").val();
 
-				// validate
+				// 验证
 				$.each(data, function(key, val){
 					console.log('key:'+key)
 					console.log('val:'+val)
@@ -278,8 +271,7 @@ import Create from './components/Create'
 					}
 				})
 				console.log(validateResult)
-				if(validateResult){
-					// 
+				if(validateResult){ 
 					Action.login(data)
 				}
 			})
@@ -380,9 +372,8 @@ import Create from './components/Create'
 							regForm.find('.sex, .date > select').hide()
 					}
 
-				// validate inut data
+				// 验证数据
 				$.each(data, function(key, val){
-					console.log('key: '+key+' val: '+val+' type: '+typeof(val))
 					if(val === '' || !val){
 						Action.showMessage('请输入完整的信息！');
 						validateResult = false;
@@ -411,9 +402,6 @@ import Create from './components/Create'
 				}
 				
 				if(validateResult){
-					console.log('validate passed')	
-					console.log(data)
-					
 					Action.register(data);
 				}
 				
@@ -439,3 +427,5 @@ import Create from './components/Create'
 	// test get prize， 0=>试用 1=>优惠
 	// new Result(0).render('div.star-all-collected')
 	// Action.showPanel('star-all-collected')
+
+	Action.showPanel('share-tips')

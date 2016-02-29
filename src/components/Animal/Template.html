@@ -4,8 +4,19 @@
 <div class="animal animal-{{starId}}"></div>
 
 <div class="link">
-	<a href="javascript:;" class="button action-detail">查看甜睡神器详情</a>
-	<a href="javascript:;" class="button action-back">返回首页</a>
+	{{#over}}
+		<a href="javascript:;" class="button action-detail">查看甜睡神器详情</a>
+		<a href="javascript:;" class="button action-back">返回首页</a>
+	{{/over}}
+	{{^over}}
+		{{#ready}}
+		<a href="javascript:;" class="button action-get-prize">甜睡神器点亮完成</a>
+		{{/ready}}
+		{{^ready}}
+		<a href="javascript:;" class="button action-generate-qr">召唤好友</a>
+		<a href="javascript:;" class="button action-back">返回首页</a>
+		{{/ready}}
+	{{/over}}
 </div>
 
 <div class="star-detail">

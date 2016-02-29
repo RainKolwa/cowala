@@ -3,6 +3,7 @@ import config from '../store/config'
 import Share from '../components/Share'
 import Qrcode from '../components/Qrcode'
 import Result from '../components/Result'
+import Tvc from '../components/Tvc'
 
 function setItem(key, value){
 	window.localStorage.setItem(key, value)
@@ -62,7 +63,6 @@ export function validate(val, type){
 
 // 登录
 export function login(data){
-	console.log('login')
 	$.ajax({
 		url: config.api + 'users/auth',
 		method: 'POST',
@@ -74,14 +74,20 @@ export function login(data){
 				alert(response.errMsg)
 			}else{
 				showMessage('登录成功！');
-				// store access_token
+
+				// 储存信息
 				setItem('token', response.access_token);
-				// 
+				setItem('user', response.user);
+				response.star && setItem('star', Array.isArray(response.star) ? JSON.stringify(response.star[0]) : JSON.stringify(response.star));
+				response.winning_state && setItem('winning_state', JSON.stringify(response.winning_state));
+				response.trialPack && setItem('trialPack', JSON.stringify(response.trialPack));
+
+				// 隐藏弹窗
 				hidePanel();
+
+				// 重新渲染Tvc
+				new Tvc().render('div.tvc');
 			}
-		},
-		error: function(){
-			//
 		}
 	})
 }
@@ -135,7 +141,6 @@ export function getCaptcha(mobile){
 
 // 获取用户信息
 export function loadUser(){
-	console.log(getItem('token'))
 	$.ajax({
 		url: config.api + 'users/user_info',
 		method: 'POST',
@@ -162,8 +167,6 @@ export function loadUser(){
 
 // 创建神器
 export function createStar(star){
-	console.log('test')
-
 	$.ajax({
 		url: config.api + 'stars/create',
 		method: 'POST',
@@ -176,18 +179,18 @@ export function createStar(star){
 	        "x-token": getItem('token')
 	    },
 		success: function(response){
-			// 
 			if(response.errFlg){
 				showMessage(response.errMsg);
 				// if invalid token???
 			}else{
-				//
 				showMessage('创建成功');
-				// update localStorage
+
+				// 更新储存
 				setItem('star', response.star);
 
 				// 初始化选择结果页
 				new Share(response.star).render('div.share-tips')
+				showPanel('share-tips')
 			}
 		}
 	})
