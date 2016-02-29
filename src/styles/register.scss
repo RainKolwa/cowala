@@ -1,13 +1,63 @@
 .register-form{
-	.type{
-		li{
-			&.active{
-				color: red
-			}
-		}
-	}
 	.bd{
 		.form{
+			.form-data-box{
+				width: 500px;
+				margin: 0 auto 0 110px;
+				> div{
+					margin: 0;
+					overflow: hidden;
+				}
+				label{
+					display: inline-block;
+					width: 104px;
+					line-height: 50px;
+					font-size: 20px;
+					color: $color;
+				}
+				label[for=type],
+				label[for=date],
+				label[for=sex]{
+					float: left;
+				}
+				ul.type{
+					float: left;
+					overflow: hidden;
+					li{
+						font-size: 20px;
+						color: $color;
+						float: left;
+						line-height: 50px;
+						margin-right: 18px;
+						padding-left: 18px;
+						cursor: pointer;
+						background: url(../images/icon-option-s.png) left 20px no-repeat;
+						&.active{
+							background-position: left -32px;
+						}
+					}
+				}
+				.date{
+					float: left;
+					select{
+						margin-top: 15px;
+					}
+				}
+				.sex{
+					float: left;
+					label{
+						width: auto;
+						margin-right: 15px;
+					}
+				}
+				.terms{
+					margin-left: 80px;
+					label{
+						width: auto;
+						line-height: 35px;
+					}
+				}
+			}
 			.button{
 				margin: 0 auto;
 				@include scale(.8);
@@ -20,20 +70,28 @@
 			input[type=text],
 			input[type=password],
 			input[type=mobile]{
-				display: block;
 				width: 234px;
 				height: 37px;
 				border: 1px solid #c0a25b;
 				border-radius: 6px;
 				background: #f4cd71;
-				margin: 10px auto;
 				box-shadow: 0 1px 1px #969696 inset;
 				font-size: 20px;
 				color: $color;
 				padding-left: 10px;
 			}
 			input[name=captcha]{
-				width: 144px;
+				width: 140px;
+			}
+			.action-get-captcha{
+				display: inline-block;
+				font-size: 16px;
+				color: $color;
+				text-decoration: underline;
+				margin: 0 5px 0 4px;
+			}
+			span.required{
+				margin-left: 5px;
 			}
 		}
 	}
