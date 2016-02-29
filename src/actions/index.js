@@ -79,7 +79,7 @@ export function login(data){
 				setItem('token', response.access_token);
 				setItem('user', response.user);
 				response.star && setItem('star', Array.isArray(response.star) ? JSON.stringify(response.star[0]) : JSON.stringify(response.star));
-				response.winning_state && setItem('winning_state', JSON.stringify(response.winning_state));
+				response.winning_state && setItem('winning_state', response.winning_state);
 				response.trialPack && setItem('trialPack', JSON.stringify(response.trialPack));
 
 				// 隐藏弹窗

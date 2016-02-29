@@ -19,7 +19,14 @@
 	{{/over}}
 </div>
 
-<div class="star-detail">
+<div class="star-detail-popup">
 	<div class="bg"></div>
-	<div class="title">您为宝宝成功申领XXX</div>
+	{{#coupon}}
+	<div class="title">您为宝宝成功申领<br>天猫优惠券</div>
+
+	{{/coupon}}
+	{{^coupon}}
+	<div class="title">您为宝宝成功申领<br>甜睡试用装</div>
+	{{/coupon}}
+	<a href="javascript:;" class="back">返回</a>
 </div>
