@@ -1,0 +1,53 @@
+<div class="box-outside">
+<div class="bd">
+	<div class="form">
+	<h3>新用户注册</h3>
+	<input type="text" name="nick_name" placeholder="nick_name" />
+	<input type="text" name="email" placeholder="email" />
+	
+	<input type="mobile" name="mobile" placeholder="mobile" />
+	<input type="text" name="captcha" placeholder="captcha" />
+	<a class="action-get-captcha" href="javascript:;">获取验证码</a>
+	
+	<input type="password" name="password" placeholder="password" />
+	<input type="password" name="repassword" placeholder="repassword" />
+
+	<ul class="type">
+		<li class="active">妈妈</li>
+		<li>准妈妈</li>
+		<li>备孕妈妈</li>
+		<li>其他</li>
+	</ul>
+
+	<div class="sex">
+		<input type="radio" name="baby_sex" value="男" checked="checked" />
+		<label>男</label>
+		<input type="radio" name="baby_sex" value="女" />
+		<label>女</label>
+	</div>
+	<div class="date-label">宝宝生日</div>
+	<div class="date">
+		<select name="baby_birthday_year">
+			{{#year}}
+				<option>{{.}}</option>
+			{{/year}}
+		</select>
+		<select name="baby_birthday_month">
+			{{#month}}
+				<option>{{.}}</option>
+			{{/month}}
+		</select>
+		<select name="baby_birthday_day">
+			{{#day}}
+				<option>{{.}}</option>
+			{{/day}}
+		</select>
+	</div>
+	<div class="terms">
+		<input type="checkbox" name="term" id="term" />
+		<label for="term">已阅读并同意大王服务条款</label>
+	</div>
+	<a class="button action-create-user" href="javascript:;">注册</a>
+	</div>
+</div>
+</div>

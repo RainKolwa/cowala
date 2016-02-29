@@ -1,0 +1,24 @@
+$rate : 1280/1920;
+
+@media (max-width: 1440px) {
+  .site-nav{
+  	.logo{
+  		@include scale($rate)
+  		transform-origin: left top;
+  	}
+  	.link{
+  		@include scale($rate)
+  		transform-origin: right top;	
+  	}
+  	.left-nav{
+  		@include scale($rate)
+  		transform-origin: left center;
+  	}
+  }
+  .tvc{
+  	@include scale($rate)
+  }
+  .popup-panel{
+  	@include scale($rate)	
+  }
+}

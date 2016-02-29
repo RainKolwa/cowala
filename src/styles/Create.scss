@@ -1,0 +1,79 @@
+.create-form{
+	.bd{
+		.form{
+			.button{
+				margin: 0 auto;
+				@include scale(.8);
+				transform-origin: center bottom;
+			}
+			p{
+				font-size: 20px;
+				color: $color;
+				line-height: 30px;
+				text-align: center;
+				span{
+					text-decoration: underline;
+					color: #a43a00;
+				}
+			}
+			.selections{
+				position: relative;
+				background: url(../images/selector-bg.png) center -50px no-repeat;
+				.animal{
+					width: 280px;
+					height: 280px;
+					margin: 0 auto;
+				}
+				.slick-arrow{
+					display: block;
+					position: absolute;
+					outline: none;
+					z-index: 2;
+					cursor: pointer;
+					top: 50%;
+					width: 45px;
+					height: 45px;
+					margin-top: -1/2 * 45px;
+					border: none;
+					text-indent: -9999px;
+					background: url(../images/button-prev.png) center center no-repeat;
+				}
+				.slick-prev{
+					left: 10px;
+				}
+				.slick-next{
+					right: 10px;
+					background: url(../images/button-next.png) center center no-repeat;
+				}
+				.slick-list{
+					width: 300px;
+					margin: 0 auto;
+				}
+				.slick-dots{
+					width: 102px;
+					margin: 0 auto;
+					overflow: hidden;
+					text-align: center;
+					li{
+						float: left;
+						margin: 1/2 * 9px;
+						button{
+							border: none;
+							width: 8px;
+							height: 8px;
+							background: #8e6d02;
+							border-radius: 4px;
+							padding: 0;
+							text-indent: -9999px;
+						}
+						&.slick-active{
+							button{
+								background: #fff;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

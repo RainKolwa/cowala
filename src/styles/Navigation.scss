@@ -1,0 +1,47 @@
+.site-nav{
+	.logo{
+		position: fixed;
+		left: 26px;
+		top: 26px;
+		width: 238px;
+		height: 76px;
+		background: url(../images/logo.png) no-repeat;
+		background-size: 100%;
+	}
+	.link{
+		position: fixed;
+		right: 20px;
+		top: 30px;
+		width: 131px;
+		height: 43px;
+		text-indent: -9999px;
+		background: url(../images/btn-official.png) no-repeat;
+		&:hover{
+			opacity: .8;
+		}
+	}
+	.left-nav{
+		position: fixed;
+		left: -20px;
+		top: 10%;
+		width: 271px;
+		height: 417px;
+		background: url(../images/leftnav.png) no-repeat;
+		li{
+			width: 128px;
+			height: 128px;
+			position: absolute;
+			left: 70px;
+			top: 75px;
+			&:nth-child(1){
+				top: 220px;
+			}
+			a{
+				display: block;
+				width: 100%;
+				height: 100%;
+				text-indent: -9999px;
+			}
+		}
+	}
+}

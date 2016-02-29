@@ -1,0 +1,181 @@
+.popup-panel{
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	width: 708px;
+	padding-top: 31px;
+	margin-left: -1/2 * 708px;
+	.box-outside{
+		padding: 12px;
+		background: rgba(#6d4500, .3);
+	}
+	.bd{
+		padding: 14px;
+		background: rgba(#6d4500, .5);	
+		h3{
+			font-size: 36px;
+			color: $color;
+			text-align: center;
+			padding: 20px 0 25px;
+		}
+		.form{
+			width: 655px;
+			background: url(../images/panel-bg.jpg) center bottom no-repeat;
+			background-size: cover;
+		}
+	}
+	&.register-form{
+		margin-top: -1/2 * 638px - 31px;
+		.form{
+			height: 638px;
+			margin: 0 auto;
+		}
+	}
+	&.login-form{
+		margin-top: -1/2 * 438px - 31px;
+		.form{
+			height: 438px;
+			margin: 0 auto;
+		}	
+	}
+	&.create-form{
+		margin-top: -1/2 * 642px - 31px;
+		.form{
+			height: 642px;
+			margin: 0 auto;
+		}	
+	}
+	&.star-all-collected{
+		margin-top: -1/2 * 576px - 31px;
+		.form{
+			height: 576px;
+			margin: 0 auto;
+			h3{
+				padding: 60px 0 45px;
+			}
+			p{
+				font-size: 24px;
+				color: $color;
+				line-height: 38px;
+				text-align: center;
+				margin-bottom: 30px;
+				span{
+					color: #a43a00;
+					text-decoration: underline;
+				}
+			}
+			.button{
+				margin: 0 auto;
+				@include scale(.8);
+				transform-origin: center top;
+			}
+			&.form-1{
+				h3{
+					padding: 20px 0 15px;
+				}
+				p{
+					font-size: 22px;
+					line-height: 30px;
+					margin-bottom: 20px;
+				}
+			}
+		}
+	}
+	&.apply-form{
+		margin-left: -1/2 * 860px;
+		margin-top: -1/2 * 686px - 31px;
+		.form{
+			width: 860px;
+			height: 686px;
+			margin: 0 auto;
+			h3{
+				font-size: 26px;
+			}
+			.button{
+				margin: 0 auto;
+				@include scale(.8);
+				transform-origin: center top;
+			}
+			.options{
+				overflow: hidden;
+				width: 2 * 345px + 2 * 18px;
+				margin: 0 auto;
+				> a{
+					position: relative;
+					display: block;
+					float: left;
+					margin: 0 9px;
+					width: 345px;
+					height: 185px;
+					background: rgba(255, 255, 255, .5);
+					div{
+						position: absolute;
+						width: 100%;
+						height: 100%;
+						right: 0;
+						top: 0;
+					}
+					span{
+						position: absolute;
+						width: 29px;
+						height: 29px;
+						left: 18px;
+						top: 18px;
+						display: block;
+						background: url(../images/icon-option.png) 0 -29px no-repeat;
+					}
+					&.option-1 > div{
+						background: url(../images/prize-1.png) 72px 12px no-repeat;
+					}
+					&.option-2 > div{
+						background: url(../images/prize-2.png) 72px 12px no-repeat;
+					}
+					&.active{
+						span{
+							background-position: 0 0;
+						}
+					}
+				}
+			}
+		}	
+	}
+	&.star-form{
+		margin-top: -1/2 * 642px - 26px;
+		.form{
+			height: 642px;
+			margin: 0 auto;
+		}	
+	}
+	&.share-tips{
+		width: 807px + 40px;
+		margin-top: -1/2*664px - 1/2*40px;
+		margin-left: -1/2*807px - 1/2*40px;
+
+		.bd{
+			background: rgba(8, 71, 126, .6);
+			padding: 20px;
+			.form{
+				width: 100%;
+				height: 664px;
+				border: 2px solid #08477e;
+				background: url(../images/panel-bg-black.jpg) center top no-repeat;
+			}
+		}
+	}
+	&.share-tips-qr{
+		width: 807px + 40px;
+		margin-top: -1/2*664px - 1/2*40px;
+		margin-left: -1/2*807px - 1/2*40px;
+
+		.bd{
+			background: rgba(8, 71, 126, .6);
+			padding: 20px;
+			.form{
+				width: 100%;
+				height: 664px;
+				border: 2px solid #08477e;
+				background: url(../images/panel-bg-black.jpg) center top no-repeat;
+			}
+		}
+	}
+}

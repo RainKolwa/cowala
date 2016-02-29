@@ -1,0 +1,29 @@
+.share-tips-qr{
+	.bd{
+		img{
+			display: block;
+			width: 245px;
+			height: 245px;
+			margin: 80px auto 0;
+		}
+		h3{
+			color: #84d2ff;
+		}
+		p{
+			font-size: 24px;
+			line-height: 30px;
+			color: #84d2ff;
+			text-align: center;
+			span{
+				color: #fff;
+				text-decoration: underline;
+			}
+			&.tip{
+				font-size: 22px;
+			}
+		}
+		.button{
+			margin: 20px auto;
+		}
+	}
+}

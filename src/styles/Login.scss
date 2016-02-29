@@ -1,0 +1,28 @@
+.login-form{
+	.bd{
+		.form{
+			.button{
+				margin: 0 auto;
+				@include scale(.8);
+				transform-origin: center top;
+				&.action-login{
+					position: relative;
+					top: 20px;
+				}
+			}
+			input{
+				display: block;
+				width: 362px;
+				height: 62px;
+				border: 1px solid #c0a25b;
+				border-radius: 6px;
+				background: #f4cd71;
+				margin: 10px auto;
+				box-shadow: 0 1px 1px #969696 inset;
+				font-size: 20px;
+				color: $color;
+				padding-left: 10px;
+			}
+		}
+	}
+}

@@ -1,0 +1,14 @@
+.button{
+	display: block;
+	text-align: center;
+	font-size: 24px;
+	color: $color;
+	width: 324px;
+	height: 1/2 * 196px;
+	line-height: 1/2 * 196px;
+	background: url(../images/button.png) 0 0 no-repeat;
+	&:hover{
+		background-position: 0 -98px;
+	}
+}
+

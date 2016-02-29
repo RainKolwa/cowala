@@ -1,0 +1,28 @@
+// variables
+$size: 24px;
+$color: #553500;
+$ease: .4s;
+
+// mixins
+@mixin scale($val){
+	transform: scale($val)
+}
+
+@import 'Reset';
+@import 'Normalize';
+@import 'Layout';
+@import 'Loading';
+@import 'Button';
+@import 'Navigation';
+@import 'Popup';
+@import 'Register';
+@import 'Login';
+@import 'Create';
+@import 'Star';
+@import 'Share';
+@import 'Qrcode';
+@import 'Keyframes';
+@import 'MediaQuery';
+@import 'Slick';
+
+
