@@ -94,23 +94,32 @@ import Create from './components/Create'
 
 	GOON.Tvc = (function(){
 
-		var tvc = $('.tvc');
+		var tvc = $('.tvc'),
+			timer,
+			i = 0;
 
 		var init = function(){
 
 			new Tvc().render('div.tvc');
 
-			tvc.fadeIn();
+			show();
 
 			bindEvents();
 		};
 
 		var hide = function(){
 			tvc.hide();
+			clearInterval(timer)
 		};
 
 		var show = function(){
-			tvc.show();
+			tvc.fadeIn();
+			clearInterval(timer)
+			timer = setInterval(function(){
+				if(i===3){i=0}
+				$('.slogan').find('.light').eq(i).addClass('active').siblings().removeClass('active')
+				i++;
+			},2000)
 		};
 
 		var bindEvents = function(){
