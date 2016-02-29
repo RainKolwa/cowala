@@ -1,12 +1,13 @@
 import $ from 'jquery'
 import template from './Loadbox.html'
 import Mustache from 'mustache'
-import img1 from '../../images/01.jpg'
-import img2 from '../../images/02.jpg'
-import img3 from '../../images/03.jpg'
-import img4 from '../../images/04.jpg'
-import img5 from '../../images/05.jpg'
-import img6 from '../../images/06.jpg'
+import img1 from '../../images/load-circle.png'
+import img2 from '../../images/load-bg.png'
+import img3 from '../../images/logo.png'
+import img4 from '../../images/slogan.png'
+import img5 from '../../images/panel-bg.jpg'
+import img6 from '../../images/button.png'
+import img7 from '../../images/leftnav.png'
 
 export default class Loadbox {
 	constructor(type) {
@@ -18,8 +19,7 @@ export default class Loadbox {
 		
 		switch(this.type) {
 			case 'landing':
-				preload = [img1,img2,img3,img4,img5,img6]
-				console.log(preload)
+				preload = [img1,img2,img3,img4,img5,img6,img7]
 				break
 			default:
 				preload = []

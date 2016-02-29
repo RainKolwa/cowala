@@ -91,6 +91,7 @@ import Create from './components/Create'
 		};
 	})();
 
+
 	GOON.Tvc = (function(){
 		var tvc = $('.tvc');
 
@@ -125,6 +126,7 @@ import Create from './components/Create'
 
 	})();
 
+
 	GOON.Panel = (function(){
 		var init = function(){
 
@@ -134,9 +136,6 @@ import Create from './components/Create'
 		var bindEvents = function(){
 			var wrap = $('#wrapper');
 
-			// 
-			//wrap.on('click'. '')
-
 			// 提交收货信息
 			wrap.on('click', '.action-submit-apply', function(e){
 				e.preventDefault();
@@ -145,7 +144,6 @@ import Create from './components/Create'
 					data = {},
 					validateResult = true;
 				
-				// validate
 				data.user_id = Action.getLocal('user').id;
 				data.product_id = apply.find('.options .active').index() + 1;
 				data.mobile = apply.find('input[name=mobile]').val();
@@ -181,7 +179,6 @@ import Create from './components/Create'
 			wrap.on('click', '.action-apply', function(e){
 				e.preventDefault()
 
-				console.log('1')
 				//
 				new Apply().render('div.apply-form')
 				Action.showPanel('apply-form')
@@ -194,7 +191,6 @@ import Create from './components/Create'
 				Action.hidePanel();
 				GOON.Tvc.show();
 
-				// remove active class from circle
 				$('.star-detail').removeClass('active');
 			})
 
