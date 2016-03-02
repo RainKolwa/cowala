@@ -58,7 +58,7 @@ import Create from './components/Create'
 			var imgs = preloadBox.find('img'),
 				allimg_count = imgs.length,
 				img_count = 0;
-			console.log(imgs)
+			
 			imgs.each(function(){
 				$(this).imagesLoaded(function(){
 					img_count++;
@@ -157,6 +157,7 @@ import Create from './components/Create'
 					validateResult = true;
 				
 				data.user_id = Action.getLocal('user').id;
+				data.recipient = apply.find('input[name=recipient]').val();
 				data.product_id = apply.find('.options .active').index() + 1;
 				data.mobile = apply.find('input[name=mobile]').val();
 				data.province_id = 1;
@@ -182,6 +183,7 @@ import Create from './components/Create'
 				})
 
 				if(validateResult){
+					console.log('address form address validte passed')
 					Action.submitApply(data)
 				}	
 			})
@@ -325,20 +327,20 @@ import Create from './components/Create'
 				switch(type){
 					case '妈妈':
 						dateLabel = '宝宝生日'
-						regForm.find('.sex, .date > select').show()
+						regForm.find('.sexbox, .date > select').show()
 						break;
 					case '准妈妈':
 						dateLabel = '预产期'
-						regForm.find('.sex').hide()
+						regForm.find('.sexbox').hide()
 						regForm.find('.date > select').show()
 						break;
 					case '备孕妈妈':
 						dateLabel = '预期'
-						regForm.find('.sex').hide()
+						regForm.find('.sexbox').hide()
 						regForm.find('.date > select').eq(0).show().siblings().hide()
 						break;
 					default://其他
-						regForm.find('.sex, .date > select').hide()
+						regForm.find('.sexbox, .date > select').hide()
 				}
 				regForm.find('.date-label').text(dateLabel)
 			})
@@ -387,10 +389,12 @@ import Create from './components/Create'
 
 				// 验证数据
 				$.each(data, function(key, val){
-					if(val === '' || !val){
-						Action.showMessage('请输入完整的信息！');
-						validateResult = false;
-						return false
+					if(key !== 'type' && key !== 'baby_birthday_year' && key !== 'baby_birthday_month' && key !== 'baby_birthday_day' && key !== 'baby_sex'){
+						if(val === '' || !val){
+							Action.showMessage('请输入完整的信息！');
+							validateResult = false;
+							return false
+						}
 					}
 					if(key === 'mobile' && !Action.validate(val, 'mobile')){
 						Action.showMessage('手机号码格式有误！');
@@ -441,4 +445,4 @@ import Create from './components/Create'
 	// new Result(0).render('div.star-all-collected')
 	// Action.showPanel('star-all-collected')
 
-	Action.showPanel('share-tips')
+	// Action.showPanel('share-tips')

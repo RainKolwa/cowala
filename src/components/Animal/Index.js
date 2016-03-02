@@ -1,3 +1,8 @@
+/*
+ * 神器详情
+ *
+**/ 
+
 import $ from 'jquery'
 import template from './Template.html'
 import Mustache from 'mustache'
@@ -5,20 +10,26 @@ import { getItem, getLocal } from '../../actions'
 
 export default class Animal {
 	constructor() {
-        // 状态
-        this.start = getItem('star')
-        this.ready = getItem('star') && getLocal('star').star_count > 4
-        this.winning_state = getItem('winning_state')
-        this.accepted = false
-        if(this.winning_state === "1" || this.winning_state === "0"){
-            this.accepted = true
-        }
+        // init
+        this.star = getLocal('star')
+        this.winning_state = this.star.winning_state
+        this.trialPack = getLocal('trialPack')
+        this.hasGotPrize = false
+        this.prizeIsTrialPack = false
 
         // 数据
-        this.id = getLocal('star').star_name_id
-		this.count = getLocal('star').star_count
-        this.winning_state = this.winning_state && getLocal('winning_state')
-        this.hasGotTrialPack = this.winning_state && getLocal('trialPcak')
+        this.id = this.star.star_name_id
+		this.count = this.star.star_count
+
+        // 状态
+        this.applied = (this.winning_state === 0 && this.trialPack) ? true : false
+        this.allStarCollected = this.count > 4 ? true : false
+        if(this.winning_state === 1 || this.winning_state === 0){
+            this.hasGotPrize = true
+        }
+        if(this.winning_state === 0){
+            this.prizeIsTrialPack = true
+        }
 	}
 
 	onShow(e) {
@@ -33,23 +44,20 @@ export default class Animal {
 
 	render(node) {        
         console.log({
-            start: this.start,
-            ready: this.ready,
-            accepted: this.accepted,
-            starId: this.id, 
-            count: this.count, 
-            winning_state: this.winning_state,
-            hasGotTrialPack: this.hasGotTrialPack
-        })
+                allStarCollected: this.allStarCollected,
+                hasGotPrize: this.hasGotPrize,
+                prizeIsTrialPack: this.prizeIsTrialPack,
+                starCount: this.count || 0,
+                applied: this.applied
+            })
         $(node).html(
             Mustache.render(template, {
-                start: this.start,
-                ready: this.ready,
-                accepted: this.accepted,
-                starId: this.id, 
-                count: this.count, 
-                winning_state: this.winning_state,
-                hasGotTrialPack: this.hasGotTrialPack
+                allStarCollected: this.allStarCollected,
+                hasGotPrize: this.hasGotPrize,
+                prizeIsTrialPack: this.prizeIsTrialPack,
+                starCount: this.count || 0,
+                applied: this.applied,
+                id: this.id
             })
         );
 

@@ -1,38 +1,46 @@
 <div class="count">
-	<span>已被点亮{{count}}次</span>
+	<span>已被点亮{{starCount}}次</span>
 </div>
-<div class="animal animal-{{starId}}"></div>
+<div class="animal animal-{{id}}"></div>
 
 <div class="link">
-	{{#accepted}}
-		{{#hasGotTrialPack}}
-		<a href="javascript:;" class="button action-detail">查看甜睡神器详情</a>
-		<a href="javascript:;" class="button action-back">返回首页</a>
-		{{/hasGotTrialPack}}
-		{{^hasGotTrialPack}}
-		<a class="button action-apply" href="javascript:;">马上领取甜睡试用装</a>
-		{{/hasGotTrialPack}}
-	{{/accepted}}
-	{{^accepted}}
-		{{#ready}}
+	{{#allStarCollected}}
+		{{#hasGotPrize}}
+			{{#prizeIsTrialPack}}
+				{{#applied}}
+				<a href="javascript:;" class="button action-detail">查看甜睡神器详情</a>
+				<a href="javascript:;" class="button action-back">返回首页</a>
+				{{/applied}}
+				{{^applied}}
+				<!-- 填写试用装申请 -->
+				<a class="button action-apply" href="javascript:;">马上领取甜睡试用装</a>
+				{{/applied}}
+			{{/prizeIsTrialPack}}
+			{{^prizeIsTrialPack}}
+				<a href="javascript:;" class="button action-detail">查看甜睡神器详情</a>
+				<a href="javascript:;" class="button action-back">返回首页</a>
+			{{/prizeIsTrialPack}}
+		{{/hasGotPrize}}
+		{{^hasGotPrize}}
+		<!-- 抽奖 -->
 		<a href="javascript:;" class="button action-get-prize">甜睡神器点亮完成</a>
-		{{/ready}}
-		{{^ready}}
-		<a href="javascript:;" class="button action-generate-qr">召唤好友</a>
-		<a href="javascript:;" class="button action-back">返回首页</a>
-		{{/ready}}
-	{{/accepted}}
+		{{/hasGotPrize}}
+	{{/allStarCollected}}
+	{{^allStarCollected}}
+	<a href="javascript:;" class="button action-generate-qr">召唤好友</a>
+	<a href="javascript:;" class="button action-back">返回首页</a>
+	{{/allStarCollected}}
 </div>
 
-{{#accepted}}
+{{#hasGotPrize}}
 <div class="star-detail-popup">
 	<div class="bg-cir"></div>
-	{{#winning_state}}
+	{{#prizeIsTrialPack}}
 	<div class="title">您为宝宝成功申领<br>甜睡试用装</div>
-	{{/winning_state}}
-	{{^winning_state}}
+	{{/prizeIsTrialPack}}
+	{{^prizeIsTrialPack}}
 	<div class="title">您为宝宝成功申领<br>天猫优惠券</div>
-	{{/winning_state}}
+	{{/prizeIsTrialPack}}
 	<a href="javascript:;" class="back">返回</a>
 </div>
-{{/accepted}}
+{{/hasGotPrize}}

@@ -33,7 +33,11 @@ function clearItem(){
 }
 
 export function getLocal(type){
-	return JSON.parse(getItem(type))
+	try {
+      return JSON.parse(getItem(type))
+    } catch (e) {
+      return null
+    }
 }
 
 // 显示弹窗
@@ -86,16 +90,19 @@ export function login(data){
 		data: data,
 		success: function(response){
 			if(response.errFlg){
-				alert(response.errMsg)
+				showMessage(response.errMsg)
 			}else{
 				showMessage('登录成功！');
 
 				// 储存信息
 				setItem('token', response.access_token);
-				setItem('user', response.user);
-				response.star && setItem('star', Array.isArray(response.star) ? JSON.stringify(response.star[0]) : JSON.stringify(response.star));
-				response.winning_state && setItem('winning_state', response.winning_state);
-				response.trialPack && setItem('trialPack', JSON.stringify(response.trialPack));
+				setItem('user', JSON.stringify(response.user));
+				if(response.star){
+					setItem('star', JSON.stringify(response.star));
+				}
+				if(response.trialPack){
+				 	setItem('trialPack', JSON.stringify(response.trialPack));
+				}
 
 				// 隐藏弹窗
 				hidePanel();
@@ -116,8 +123,6 @@ export function logout(){
 
 // 注册
 export function register(data){
-	console.log('test')
-
 	$.ajax({
 		url: config.api + 'users/create',
 		method: 'POST',
@@ -126,11 +131,17 @@ export function register(data){
 		data: data,
 		success: function(response){
 			if(response.errFlg){
-				alert(response.errMsg)
+				let message = response.errMsg
+				let first_error = message[Object.keys(message)[0]]
+				let first_error_message = first_error[Object.keys(first_error)[0]]
+				console.log(response.errMsg)
+				console.log()
+				window.test = response.errMsg
+				showMessage(first_error_message)
 			}else{
 				showMessage('注册成功！');
-				// show success panel
-				showPanel('share-tips');
+				// 去登录
+				showPanel('login-form');
 			}
 		}
 	})
@@ -146,9 +157,11 @@ export function getCaptcha(mobile){
 		dataType: config.dataType,
 		data: {phone: mobile},
 		success: function(response){
-			// 
-			showMessage(response.errFlg ? response.errMsg : '短信验证码发送成功！');
-			//
+			if(response.errFlg){
+				showMessage(response.errMsg)
+			}else{
+				showMessage('短信验证码发送成功');
+			}
 		}
 	})
 }
@@ -169,9 +182,9 @@ export function loadUser(){
 			if(response.errFlg){
 				clearItem()
 			}else{
-				// 获取用户信息
 				setItem("user", JSON.stringify(response.user))
 				setItem("star", JSON.stringify(response.star))
+				setItem("trialPack", JSON.stringify(response.trialPack))
 
 				return response.user;
 			}
@@ -201,11 +214,14 @@ export function createStar(star){
 				showMessage('创建成功');
 
 				// 更新储存
-				setItem('star', response.star);
+				setItem('star', JSON.stringify(response.star));
 
 				// 初始化选择结果页
 				new Share(response.star).render('div.share-tips')
 				showPanel('share-tips')
+
+				// 重新渲染Tvc
+				new Tvc().render('div.tvc');
 			}
 		}
 	})
@@ -245,7 +261,7 @@ export function generateQrcode(starId){
 export function getPrize(){
 	$.ajax({
 		url: config.api + 'stars/prize',
-		method: 'POST',
+		method: 'GET',
 		crossDomain: true,
 		dataType: config.dataType,
 		headers: {
@@ -260,7 +276,11 @@ export function getPrize(){
 				new Result(response.result).render('div.star-all-collected')
 				showPanel('star-all-collected')
 				// 更新localStorage
-				setItem('winning_state', response.result)
+				if(getItem('star')){
+					let _star =  JSON.parse(getItem('star'));
+					_star.winning_state = response.result
+					setItem('star', JSON.stringify(_star))
+				}
 				// 更新甜睡神器详情
 				new Animal().render('div.star-detail')
 			}
@@ -286,10 +306,13 @@ export function submitApply(data) {
 				showMessage(response.errMsg)
 			}else{
 				// 提交成功
-				// new Result(response.result).render('div.star-all-collected')
-				// showPanel('star-all-collected')
+				showMessage("试用装申领成功")
 
-				
+				// 更新localStorage
+				setItem('trialPack', JSON.stringify(response.trialPack));
+
+				new Animal().render('div.star-detail');
+				showPanel('star-form');
 			}
 		}
 	})
