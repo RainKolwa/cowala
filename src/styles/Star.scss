@@ -72,5 +72,71 @@
 			text-indent: -9999px;
 			background: url(../images/button-back.png) no-repeat;
 		}
+		.border{
+			display: inline-block;
+			height: 30px;
+			padding: 5px 20px;
+			border: 2px dotted #005752;
+			border-radius: 20px;
+			line-height: 30px;
+		}
+		.product{
+			width: 320px;
+			font-size: 24px;
+			color: #00badc;
+			margin: 20px auto;
+			overflow: hidden;
+			> div{
+				float: left;
+			}
+			.status{
+				width: 115px;
+				height: 115px;
+				margin-right: 20px;
+				border-radius: 100%;
+				background: rgba(0, 186, 220, .34);
+				text-align: center;
+				line-height: 115px;
+				font-size: 24px;
+				color: #9ffcff;
+			}
+			.type{
+				> div{
+					margin-top: 15px;
+				}
+				> span{
+					display: block;
+					width: 100%;
+					margin-top: 15px;
+				}
+				.border{
+					margin-right: 10px;
+				}
+			}
+		}
+		.info{
+			li{
+				overflow: hidden;
+				width: 420px;
+				margin: 10px auto;
+				span{
+					float: left;
+					line-height: 30px;
+					padding: 2px 20px;
+					font-size: 18px;
+					color: #b4f2ff;
+				}
+				.border{
+					width: 80px;
+					text-align: center;
+					color: #00badc;
+					font-size: 20px;
+				}
+				.address{
+					width: 250px;
+					height: 60px;
+				}
+			}
+		}
 	}
 }

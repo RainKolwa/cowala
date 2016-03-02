@@ -37,9 +37,47 @@
 	<div class="bg-cir"></div>
 	{{#prizeIsTrialPack}}
 	<div class="title">您为宝宝成功申领<br>甜睡试用装</div>
+	<div class="product">
+		<div class="status">已申领</div>
+		<div class="type">
+			<span>甜睡系列试用装</span>
+			<div>
+				<span class="border">XL号</span>
+				<span>x1</span>
+			</div>
+		</div>
+	</div>
+	<div class="info">
+		<ul>
+			<li>
+				<span class="border">收件人</span>
+				<span>{{trialPack.recipient}}</span>
+			</li>
+			<li>
+				<span class="border">电话</span>
+				<span>{{trialPack.mobile}}</span>
+			</li>
+			<li>
+				<span class="border">收货地址</span>
+				<span class="address">{{trialPack.address}}</span>
+			</li>
+		</ul>
+	</div>
 	{{/prizeIsTrialPack}}
 	{{^prizeIsTrialPack}}
 	<div class="title">您为宝宝成功申领<br>天猫优惠券</div>
+	<div class="coupons">
+		<div class="tickets">
+			<a href="javascript:;" class="ticket-1">
+				<p>使用有效期至4月30日</p>
+				<span>领取</span>
+			</a>
+			<a href="javascript:;" class="ticket-2">
+				<p>领取有效期至到3月21日，使用有效期至领取该优惠券后一个月内</p>
+				<span>领取</span>
+			</a>
+		</div>
+	</div>
 	{{/prizeIsTrialPack}}
 	<a href="javascript:;" class="back">返回</a>
 </div>

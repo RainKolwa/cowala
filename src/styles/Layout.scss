@@ -81,9 +81,16 @@ a{
 .tickets{
 	overflow: hidden;
 	width: 2 * 245px + 40px;
-	margin: 0 auto;
+	margin: 30px auto;
 	> a{
 		margin: 0 10px;
+		p{
+			font-size: 16px;
+			color: #fff;
+			text-align: center;
+			height: 40px;
+			margin: 5px 0;
+		}
 		span{
 			transition: background $ease;
 		}
@@ -160,6 +167,7 @@ a{
 			line-height: 30px;
 			color: #fff;
 			text-align: center;
+			margin-top: 10px;
 		}
 	}
 }

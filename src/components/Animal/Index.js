@@ -57,6 +57,7 @@ export default class Animal {
                 prizeIsTrialPack: this.prizeIsTrialPack,
                 starCount: this.count || 0,
                 applied: this.applied,
+                trialPack: this.trialPack,
                 id: this.id
             })
         );
@@ -65,6 +66,6 @@ export default class Animal {
         $('.action-detail').click(this.onShow.bind(this))
 
         // 关闭详情
-        $('.star-detail-popup').click(this.onHide.bind(this))
+        $('.star-detail-popup .back').click(this.onHide.bind(this))
     }
 }
