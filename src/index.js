@@ -446,3 +446,6 @@ import Create from './components/Create'
 	// Action.showPanel('star-all-collected')
 
 	// Action.showPanel('share-tips')
+	// 显示试用品申请表
+	// new Apply().render('div.apply-form')
+	// Action.showPanel('apply-form')

@@ -1,0 +1,94 @@
+.apply-form{
+	p{
+		text-align: center;
+		font-size: 26px;
+		color: $color;
+		margin: 20px 0 15px;
+	}
+	.details{
+		width: 650px;
+		margin: 0 auto;
+		> div{
+			margin: 20px 0;
+			overflow: hidden;
+		}
+		label{
+			float: left;
+			font-size: 22px;
+			line-height: 30px;
+			color: $color;
+			display: inline-block;
+			width: 90px;
+			margin-right: 10px;
+			&.location{
+				width: 30px;
+				margin-right: 10px;
+				margin-left: 10px;
+			}
+			&[for=mobile]{
+				text-align: right;
+			}
+		}
+		select{
+			float: left;
+			font-size: 30px;
+		}
+		input,
+		textarea{
+			float: left;
+			font-size: 22px;
+			color: $color;
+			padding: 5px 10px;
+			border: 1px solid #403200;
+			background: #cfa200;
+		}
+		input{
+			width: 200px;
+		}
+		textarea{
+			width: 520px;
+			height: 100px;
+		}
+	}
+	.options{
+		overflow: hidden;
+		width: 2 * 345px + 2 * 18px;
+		margin: 0 auto;
+		> a{
+			position: relative;
+			display: block;
+			float: left;
+			margin: 0 9px;
+			width: 345px;
+			height: 185px;
+			background: rgba(255, 255, 255, .5);
+			div{
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				right: 0;
+				top: 0;
+			}
+			span{
+				position: absolute;
+				width: 29px;
+				height: 29px;
+				left: 18px;
+				top: 18px;
+				display: block;
+				background: url(../images/icon-option.png) 0 -29px no-repeat;
+			}
+			&.option-1 > div{
+				background: url(../images/prize-1.png) 72px 12px no-repeat;
+			}
+			&.option-2 > div{
+				background: url(../images/prize-2.png) 72px 12px no-repeat;
+			}
+			&.active{
+				span{
+					background-position: 0 0;
+				}
+			}
+		}
+	}
+}
