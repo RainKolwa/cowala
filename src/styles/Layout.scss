@@ -73,6 +73,11 @@ a{
 	.animal-#{$i} {
     	background: url('../images/animal-'+$i+'.png') center top no-repeat;	
 	}
+	@for $n from 1 through 5 {
+		.animal-#{$i}-#{$n} {
+	    	background: url('../images/pet_'+$i+'_'+$n+'.png') center top no-repeat;	
+		}
+	}
 }
 
 
