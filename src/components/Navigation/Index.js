@@ -1,5 +1,5 @@
 import $ from 'jquery'
-import template from './Navigation.html'
+import template from './Template.html'
 import Mustache from 'mustache'
 
 export default class Navigation {
