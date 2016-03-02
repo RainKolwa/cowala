@@ -18,11 +18,67 @@ a{
 	display: none
 }
 
+.bg,
+.star,
+#wrapper{
+	position: fixed;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+}
+
+#wrapper{
+	z-index: 3;
+}
+
+.bg,
+.star{
+	transition: background-position 5s
+}
+
+.bg{
+	background: url(../images/bg.jpg) no-repeat;
+	background-size: 200%;
+	background-position: 50% bottom;
+}
+
+.star{
+	z-index: 2;
+	background: url(../images/star.png) no-repeat;
+	background-size: 200%;
+	background-position: 50% bottom;
+}
+
+.message{
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	text-align: center;
+	height: 40px;
+	transition: top .2s;
+	span{
+		display: inline-block;
+		padding: 10px;
+		background: #fff;
+	}
+	&.active{
+		top: 0;
+	}
+}
+
+
+
+
 @for $i from 1 through 6 {
 	.animal-#{$i} {
     	background: url('../images/animal-'+$i+'.png') center top no-repeat;	
 	}
 }
+
+
+
 
 .tickets{
 	overflow: hidden;

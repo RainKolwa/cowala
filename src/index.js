@@ -78,7 +78,11 @@ import Create from './components/Create'
 			// 移除loading
 			loader.hide()
 
-			// 
+			// 片头动画
+
+			// 星空动画
+			
+
 			GOON.Tvc.init()
 		};
 
@@ -119,7 +123,7 @@ import Create from './components/Create'
 				if(i===3){i=0}
 				$('.slogan').find('.light').eq(i).addClass('active').siblings().removeClass('active')
 				i++;
-			},2000)
+			},500)
 		};
 
 		var bindEvents = function(){

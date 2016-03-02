@@ -38,7 +38,11 @@ export function hidePanel(){
 
 // 显示消息
 export function showMessage(msg){
-	alert(msg)
+	$('.message span').text(msg);
+	$('.message').addClass('active');
+	setTimeout(function(){
+		$('.message').removeClass('active');
+	},1000)
 }
 
 // 验证登录

@@ -1,6 +1,10 @@
 $rate : 1280/1920;
 
 @media (max-width: 1440px) {
+  #loader{
+    @include scale($rate)
+    transform-origin: center center;
+  }
   .site-nav{
   	.logo{
   		@include scale($rate)
