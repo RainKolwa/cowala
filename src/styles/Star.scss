@@ -30,6 +30,12 @@
 				position: relative;
 				left: -20px;
 			}
+			&.action-get-prize,
+			&.action-apply{
+				left: 0;
+				float: none;
+				margin: 10px auto;
+			}
 		}
 	}
 	.star-detail-popup{

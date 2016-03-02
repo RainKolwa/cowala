@@ -4,12 +4,23 @@ import Share from '../components/Share'
 import Qrcode from '../components/Qrcode'
 import Result from '../components/Result'
 import Tvc from '../components/Tvc'
+import Animal from '../components/Animal'
+
+/*
+ * LocalStorage: {token: "", user: "", star: "", winning_state: "", trialPack: ""}
+ *
+ * @token:         access_token
+ * @star:          神器详情
+ * @winning_state: 如果为空则没有抽过奖 0 => 试用装 1 => 优惠劵
+ * @trialPack:     试用装申领信息
+ *
+**/ 
 
 function setItem(key, value){
 	window.localStorage.setItem(key, value)
 }
 
-function getItem(key){
+export function getItem(key){
 	return window.localStorage.getItem(key)
 }
 
@@ -248,6 +259,10 @@ export function getPrize(){
 				// 优惠券/试用装
 				new Result(response.result).render('div.star-all-collected')
 				showPanel('star-all-collected')
+				// 更新localStorage
+				setItem('winning_state', response.result)
+				// 更新甜睡神器详情
+				new Animal().render('div.star-detail')
 			}
 		}
 	})

@@ -1,18 +1,24 @@
 import $ from 'jquery'
 import template from './Template.html'
 import Mustache from 'mustache'
+import { getItem, getLocal } from '../../actions'
 
 export default class Animal {
 	constructor() {
         // 状态
-        this.start = window.localStorage.getItem('star')
-        this.ready = window.localStorage.getItem('star') && JSON.parse(window.localStorage.getItem('star')).star_count > 4
-        this.over = window.localStorage.getItem('trialPack') || window.localStorage.getItem('winning_state') === 1
+        this.start = getItem('star')
+        this.ready = getItem('star') && getLocal('star').star_count > 4
+        this.winning_state = getItem('winning_state')
+        this.accepted = false
+        if(this.winning_state === "1" || this.winning_state === "0"){
+            this.accepted = true
+        }
+
         // 数据
-        this.id = JSON.parse(window.localStorage.getItem('star')).star_name_id
-		this.count = JSON.parse(window.localStorage.getItem('star')).star_count
-        this.coupon = this.over && JSON.parse(window.localStorage.getItem('winning_state'))
-        this.trialPack = this.over && JSON.parse(window.localStorage.getItem('trialPack'))   
+        this.id = getLocal('star').star_name_id
+		this.count = getLocal('star').star_count
+        this.winning_state = this.winning_state && getLocal('winning_state')
+        this.hasGotTrialPack = this.winning_state && getLocal('trialPcak')
 	}
 
 	onShow(e) {
@@ -26,16 +32,24 @@ export default class Animal {
     }
 
 	render(node) {        
-        console.log(this.trialPack)
+        console.log({
+            start: this.start,
+            ready: this.ready,
+            accepted: this.accepted,
+            starId: this.id, 
+            count: this.count, 
+            winning_state: this.winning_state,
+            hasGotTrialPack: this.hasGotTrialPack
+        })
         $(node).html(
             Mustache.render(template, {
                 start: this.start,
                 ready: this.ready,
-                over: this.over,
+                accepted: this.accepted,
                 starId: this.id, 
                 count: this.count, 
-                coupon: this.coupon,
-                trialPack: this.trialPack
+                winning_state: this.winning_state,
+                hasGotTrialPack: this.hasGotTrialPack
             })
         );
 

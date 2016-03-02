@@ -4,11 +4,16 @@
 <div class="animal animal-{{starId}}"></div>
 
 <div class="link">
-	{{#over}}
+	{{#accepted}}
+		{{#hasGotTrialPack}}
 		<a href="javascript:;" class="button action-detail">查看甜睡神器详情</a>
 		<a href="javascript:;" class="button action-back">返回首页</a>
-	{{/over}}
-	{{^over}}
+		{{/hasGotTrialPack}}
+		{{^hasGotTrialPack}}
+		<a class="button action-apply" href="javascript:;">马上领取甜睡试用装</a>
+		{{/hasGotTrialPack}}
+	{{/accepted}}
+	{{^accepted}}
 		{{#ready}}
 		<a href="javascript:;" class="button action-get-prize">甜睡神器点亮完成</a>
 		{{/ready}}
@@ -16,17 +21,18 @@
 		<a href="javascript:;" class="button action-generate-qr">召唤好友</a>
 		<a href="javascript:;" class="button action-back">返回首页</a>
 		{{/ready}}
-	{{/over}}
+	{{/accepted}}
 </div>
 
+{{#accepted}}
 <div class="star-detail-popup">
 	<div class="bg-cir"></div>
-	{{#coupon}}
-	<div class="title">您为宝宝成功申领<br>天猫优惠券</div>
-
-	{{/coupon}}
-	{{^coupon}}
+	{{#winning_state}}
 	<div class="title">您为宝宝成功申领<br>甜睡试用装</div>
-	{{/coupon}}
+	{{/winning_state}}
+	{{^winning_state}}
+	<div class="title">您为宝宝成功申领<br>天猫优惠券</div>
+	{{/winning_state}}
 	<a href="javascript:;" class="back">返回</a>
 </div>
+{{/accepted}}
