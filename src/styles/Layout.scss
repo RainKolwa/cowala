@@ -18,42 +18,40 @@ a{
 	display: none
 }
 
-.bg,
-.star,
 #wrapper{
 	position: fixed;
+	z-index: 3;
 	left: 0;
 	top: 0;
 	bottom: 0;
 	width: 100%;
 }
 
-#wrapper{
-	z-index: 3;
-}
-
 .bg,
 .star{
-	transition: background-position 5s
+	position: fixed;
+	width: 200%;
+	height: 200%;
+	left: -50%;
+	top: -90%;
+	border: 1px solid orange;
 }
 
 .bg{
 	background: url(../images/bg.jpg) no-repeat;
-	background-size: 200%;
-	background-position: 50% bottom;
+	background-size: cover;
 }
 
 .star{
 	z-index: 2;
 	background: url(../images/star.png) no-repeat;
-	background-size: 200%;
-	background-position: 50% bottom;
+	background-size: cover;
 }
 
 .message{
 	position: fixed;
 	left: 0;
-	top: 0;
+	top: -40px;
 	width: 100%;
 	text-align: center;
 	height: 40px;

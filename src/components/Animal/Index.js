@@ -12,19 +12,17 @@ export default class Animal {
         this.id = JSON.parse(window.localStorage.getItem('star')).star_name_id
 		this.count = JSON.parse(window.localStorage.getItem('star')).star_count
         this.coupon = this.over && JSON.parse(window.localStorage.getItem('winning_state'))
-        this.trialPack = this.over && JSON.parse(window.localStorage.getItem('trialPack'))
-
-        
+        this.trialPack = this.over && JSON.parse(window.localStorage.getItem('trialPack'))   
 	}
 
 	onShow(e) {
         e.preventDefault();
-		$('.star-detail-popup').fadeIn().children('.bg').addClass('active');
+		$('.star-detail-popup').fadeIn().children('.bg-cir').addClass('active');
 	}
 
     onHide(e) {
         e.preventDefault();
-        $('.star-detail-popup').fadeOut().children('.bg').removeClass('active');   
+        $('.star-detail-popup').fadeOut().children('.bg-cir').removeClass('active');   
     }
 
 	render(node) {        
