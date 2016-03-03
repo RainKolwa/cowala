@@ -1,0 +1,66 @@
+.intro,
+.sceneOverlay,
+.scene{
+	position: fixed;
+	width: 100%;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 8;
+}
+.sceneOverlay{
+	z-index: 9;
+	background: rgba(0, 0, 0, .7)
+}
+.scene{
+	z-index: 10;
+	opacity: 0;
+}
+@for $i from 1 through 3 {
+	.scene#{$i}{
+		background: url('../images/intro_'+$i+'_pic.png') center center no-repeat;
+		background-size: cover;
+		.txt{
+			opacity: 0;
+			position: absolute;
+			left: 50%;
+			margin-left: -500px;
+			top: 40%;
+			background: url('../images/intro_'+$i+'_txt.png') center center no-repeat;
+		}
+	}
+}
+.scene4,
+.scene5{
+	z-index: 10;
+	opacity: 0;
+	position: absolute;
+	height: 39px;
+	left: 50%;
+}
+.scene4{
+	width: 919px;
+	top: 40%;
+	margin-left: -1/2 * 919px;
+	background: url(../images/intro_4_txt.png) no-repeat;
+}
+.scene5{
+	width: 829px;
+	top: 40%;
+	margin-left: -1/2 * 829px;
+	background: url(../images/intro_5_txt.png) no-repeat;
+}
+.scene1 .txt{
+	width: 481px;
+	height: 77px;
+}
+.scene2 .txt{
+	width: 418px;
+	height: 77px;
+}
+.scene3 .txt{
+	width: 481px;
+	height: 77px;
+}
+
+

@@ -19,6 +19,11 @@ $rate : 1280/1920;
   		transform-origin: left center;
   	}
   }
+  .scene1 .txt,
+  .scene2 .txt,
+  .scene3 .txt,
+  .scene4,
+  .scene5,
   .tvc{
   	@include scale($rate)
   }

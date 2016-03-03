@@ -9,10 +9,6 @@ a{
 	text-decoration: none;
 }
 
-#mask{
-	
-}
-
 #preload,
 .popup-panel{
 	display: none
@@ -86,7 +82,6 @@ a{
 .tickets{
 	overflow: hidden;
 	width: 2 * 245px + 40px;
-	margin: 30px auto;
 	> a{
 		margin: 0 10px;
 		p{

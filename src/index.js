@@ -1,9 +1,11 @@
 import './styles/styles.scss'
 import $ from 'jquery'
+import TweenMax from 'gsap'
 import slick from 'slick-carousel'
 import * as Action from './actions'
 import Mustache from 'mustache'
 import Navigation from './components/Navigation'
+import Intro from './components/Intro'
 import Loadbox from './components/Loadbox'
 import Loader from './components/Loader'
 import Animal from './components/Animal'
@@ -21,13 +23,16 @@ import Create from './components/Create'
 	const AnimationFrame = require('animation-frame');
 	const imagesLoaded = require('imagesLoaded');
 	imagesLoaded.makeJQueryPlugin( $ );
-	const TweenMax = require('gsap');
+	
 
 	const loader = new Loader()
 	loader.render('#loader')
 	
 	// insert site-nav
 	new Navigation().render('div.site-nav');
+
+	//
+	
 
 	// use an animation frame
 	// https://github.com/kof/animation-frame/blob/master/readme.md
@@ -64,7 +69,7 @@ import Create from './components/Create'
 					img_count++;
 					var percentage = Math.floor((img_count/allimg_count)*100);
 					percentBox.html(percentage+"%");
-					console.log(percentage)
+					
 					if(img_count === allimg_count){
 						completeLoaderHandler();
 					}
@@ -79,10 +84,9 @@ import Create from './components/Create'
 			loader.hide()
 
 			// 片头动画
-
-			// 星空动画
+			GOON.Intro.start();
 			
-
+			// 星空动画 
 			GOON.Tvc.init()
 		};
 
@@ -93,6 +97,72 @@ import Create from './components/Create'
 		return {
 			init: init
 		};
+	})();
+
+	GOON.Intro = (function(){
+
+		var intro = $('.intro');
+		var scene1;
+		var scene2;
+		var scene3;
+		var scene4;
+		var scene5;
+		var overlay;
+
+		var init = function(){
+
+			new Intro().render('div.intro')
+
+			intro = $('.intro');
+			scene1 = intro.find('.scene1');
+			scene2 = intro.find('.scene2');
+			scene3 = intro.find('.scene3');
+			scene4 = intro.find('.scene4');
+			scene5 = intro.find('.scene5');
+			overlay = intro.find('.sceneOverlay');
+		};
+
+		var start = function(){
+			console.log('TimelineLite started///')
+			var tl = new TimelineLite();
+
+			
+			tl.to(overlay, 0.5, {autoAlpha: 1});
+
+			tl.to(scene1, 0.5, {autoAlpha: 1});
+			tl.to(scene1.find('.txt'), 0.5, {autoAlpha: 1, y: -30}, "-=0.25");
+			tl.to(scene1, 0.5, {autoAlpha: 0}, "+=1");
+			
+			tl.to(scene2, 0.5, {autoAlpha: 1});
+			tl.to(scene2.find('.txt'), 0.5, {autoAlpha: 1, y: -30}, "-=0.25");
+			tl.to(scene2, 0.5, {autoAlpha: 0}, "+=1");
+
+			tl.to(scene3, 0.5, {autoAlpha: 1});
+			tl.to(scene3.find('.txt'), 0.5, {autoAlpha: 1, y: -30}, "-=0.25");
+			tl.to(scene3, 0.5, {autoAlpha: 0}, "+=1");
+
+			tl.to(scene4, 0.5, {autoAlpha: 1});
+			tl.to(scene4, 0.5, {autoAlpha: 0}, "+=1");
+
+			tl.to(scene5, 0.5, {autoAlpha: 1});
+			tl.to(scene5, 0.5, {autoAlpha: 0}, "+=1");
+
+			tl.to(overlay, 0.5, {autoAlpha: 0});
+			
+			intro.remove()
+			
+		};
+
+		var complete = function(el){
+			
+			el.fadeOut();
+		};
+
+		return {
+			init: init,
+			start: start
+		}
+
 	})();
 
 
@@ -165,11 +235,10 @@ import Create from './components/Create'
 				data.area_id = 1;
 				data.address = apply.find('textarea').val();
 
-				console.log(data);
+				
 
 				$.each(data, function(key, val){
-					console.log('key:'+key)
-					console.log('val:'+val)
+					
 					if(val === '' || !val){
 						Action.showMessage('请输入完整的信息！');
 						validateResult = false;
@@ -431,6 +500,7 @@ import Create from './components/Create'
 	})();
 	
 	GOON.Landing.init();
+	GOON.Intro.init();
 	GOON.Tvc.init();
 	GOON.Panel.init();
 
