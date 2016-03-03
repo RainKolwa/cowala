@@ -1,5 +1,10 @@
 <div class="count">
+	{{#allStarCollected}}
+	<span>甜睡神器已被点亮</span>
+	{{/allStarCollected}}
+	{{^allStarCollected}}
 	<span>已被点亮{{starCount}}次</span>
+	{{/allStarCollected}}
 </div>
 <div class="animal animal-{{id}}-{{starCount}}"></div>
 
