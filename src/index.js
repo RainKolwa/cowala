@@ -101,6 +101,8 @@ import Create from './components/Create'
 	GOON.Intro = (function(){
 
 		var intro = $('.intro');
+		var bg = $('.bg');
+		var star = $('.star');
 		var scene1;
 		var scene2;
 		var scene3;
@@ -144,24 +146,22 @@ import Create from './components/Create'
 			tl.to(scene5, 0.5, {autoAlpha: 1, y: -15});
 			tl.to(scene5, 1, {autoAlpha: 0}, "+=1");
 
-			tl.to(overlay, 0.5, {autoAlpha: 0});
+			tl.to(overlay, 0.2, {autoAlpha: 0});
 			
-			tl.to(intro, 0.5, {autoAlpha: 0, onComplete: completeTimeline});
 			
+			
+
+			// 星空动画
+			tl.to(bg, 5, {autoAlpha: 1,rotation: 360, scale: 1.6, transformOrigin: "50% 65%", onComplete: completeSkyIn}, "-=0.5")
+			tl.to(star, 1, {autoAlpha: 1})
+			tl.to(intro, 0, {autoAlpha: 0});
 		};
 
 		var completeTimeline = function(){
 			// 移除片头
-			intro.remove();
+			//intro.remove();
 
-			// 星空动画
-			var bg = $('.bg');
-			var star = $('.star');
-
-			var tl = new TimelineLite();
-
-			tl.to(bg, 5, {autoAlpha: 1,rotation: 360, scale: 1.6, transformOrigin: "50% 65%", onComplete: completeSkyIn})
-			tl.to(star, 1, {autoAlpha: 1})
+			
 
 		}
 
