@@ -81,14 +81,15 @@
 				padding-left: 10px;
 			}
 			input[name=captcha]{
-				width: 140px;
+				width: 130px;
 			}
 			.action-get-captcha{
 				display: inline-block;
 				font-size: 16px;
-				color: $color;
-				text-decoration: underline;
-				margin: 0 5px 0 4px;
+				color: #ffe8c3;
+				padding: 10px;
+				background: url(../images/code_btn.png) center center no-repeat;
+				background-size: cover;
 			}
 			span.required{
 				margin-left: 5px;
