@@ -87,7 +87,7 @@ import Create from './components/Create'
 			GOON.Intro.start();
 			
 			// 星空动画 
-			GOON.Tvc.init()
+			//GOON.Tvc.init()
 		};
 
 		var bindEvents = function(){
@@ -123,39 +123,32 @@ import Create from './components/Create'
 		};
 
 		var start = function(){
-			console.log('TimelineLite started///')
 			var tl = new TimelineLite();
-
 			
 			tl.to(overlay, 0.5, {autoAlpha: 1});
 
 			tl.to(scene1, 0.5, {autoAlpha: 1});
-			tl.to(scene1.find('.txt'), 0.5, {autoAlpha: 1, y: -30}, "-=0.25");
+			tl.to(scene1.find('.txt'), 0.5, {autoAlpha: 1, y: -15}, "-=0.25");
 			tl.to(scene1, 0.5, {autoAlpha: 0}, "+=1");
 			
 			tl.to(scene2, 0.5, {autoAlpha: 1});
-			tl.to(scene2.find('.txt'), 0.5, {autoAlpha: 1, y: -30}, "-=0.25");
+			tl.to(scene2.find('.txt'), 0.5, {autoAlpha: 1, y: -15}, "-=0.25");
 			tl.to(scene2, 0.5, {autoAlpha: 0}, "+=1");
 
 			tl.to(scene3, 0.5, {autoAlpha: 1});
-			tl.to(scene3.find('.txt'), 0.5, {autoAlpha: 1, y: -30}, "-=0.25");
+			tl.to(scene3.find('.txt'), 0.5, {autoAlpha: 1, y: -15}, "-=0.25");
 			tl.to(scene3, 0.5, {autoAlpha: 0}, "+=1");
 
-			tl.to(scene4, 0.5, {autoAlpha: 1});
+			tl.to(scene4, 0.5, {autoAlpha: 1, y: -15});
 			tl.to(scene4, 0.5, {autoAlpha: 0}, "+=1");
 
-			tl.to(scene5, 0.5, {autoAlpha: 1});
+			tl.to(scene5, 0.5, {autoAlpha: 1, y: -15});
 			tl.to(scene5, 0.5, {autoAlpha: 0}, "+=1");
 
 			tl.to(overlay, 0.5, {autoAlpha: 0});
 			
-			intro.remove()
+			tl.to(intro, 0.5, {autoAlpha: 0});
 			
-		};
-
-		var complete = function(el){
-			
-			el.fadeOut();
 		};
 
 		return {
@@ -501,7 +494,6 @@ import Create from './components/Create'
 	
 	GOON.Landing.init();
 	GOON.Intro.init();
-	GOON.Tvc.init();
 	GOON.Panel.init();
 
 
