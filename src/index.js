@@ -85,9 +85,8 @@ import Create from './components/Create'
 
 			// 片头动画
 			GOON.Intro.start();
-			
-			// 星空动画 
-			//GOON.Tvc.init()
+			// GOON.Intro.completeTimeline();
+
 		};
 
 		var bindEvents = function(){
@@ -147,13 +146,50 @@ import Create from './components/Create'
 
 			tl.to(overlay, 0.5, {autoAlpha: 0});
 			
-			tl.to(intro, 0.5, {autoAlpha: 0});
+			tl.to(intro, 0.5, {autoAlpha: 0, onComplete: completeTimeline});
 			
 		};
 
+		var completeTimeline = function(){
+			// 移除片头
+			intro.remove();
+
+			// 星空动画
+			var bg = $('.bg');
+			var star = $('.star');
+
+			var tl = new TimelineLite();
+
+			tl.to(bg, 5, {autoAlpha: 1,rotation: 360, scale: 1.6, transformOrigin: "50% 65%", onComplete: completeSkyIn})
+			tl.to(star, 1, {autoAlpha: 1})
+
+		}
+
+		var completeSkyIn = function(){
+			// 初始化Tvc	
+			GOON.Tvc.init()
+
+			// bg & star 动画
+			var bg = $('.bg');
+			var star = $('.star');
+			var tl = new TimelineMax({
+				repeat: 1
+			});
+
+			tl.to(bg, 8, {left: 0, top: 0})
+			tl.to(star, 4, {left: 0, top: 0}, "-=8")
+
+			tl.to(bg, 8, {left: "-120%", top: 0}, "+=1")
+			tl.to(star, 4, {left: "-120%", top: 0}, "-=8")
+
+			tl.to(bg, 8, {left: "-50%", top: "-90%"}, "+=1")
+			tl.to(star, 4, {left: "-50%", top: "-90%"}, "-=8")
+		}
+
 		return {
 			init: init,
-			start: start
+			start: start,
+			completeTimeline: completeTimeline
 		}
 
 	})();
