@@ -540,7 +540,7 @@ import Create from './components/Create'
 	// Action.showPanel('share-tips')
 
 	// test get prize， 0=>试用 1=>优惠
-	// new Result(0).render('div.star-all-collected')
+	// new Result(1).render('div.star-all-collected')
 	// Action.showPanel('star-all-collected')
 
 	// Action.showPanel('share-tips')
