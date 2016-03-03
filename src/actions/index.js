@@ -42,8 +42,8 @@ export function getLocal(type){
 
 // 显示弹窗
 export function showPanel(dom){
-	$('.popup-panel').hide()
-	$('.'+dom).show();
+	$('.popup-panel').fadeOut()
+	$('.'+dom).fadeIn();
 }
 
 // 隐藏弹窗
@@ -134,9 +134,7 @@ export function register(data){
 				let message = response.errMsg
 				let first_error = message[Object.keys(message)[0]]
 				let first_error_message = first_error[Object.keys(first_error)[0]]
-				console.log(response.errMsg)
-				console.log()
-				window.test = response.errMsg
+
 				showMessage(first_error_message)
 			}else{
 				showMessage('注册成功！');
