@@ -11,7 +11,7 @@ export default class Register {
 			day = [];
 		
 		for(let i=0; i<15; i++){
-			year.push(2016-i)
+			year.push(2018-i)
 		}
 		for(let i=0; i<12; i++){
 			month.push(i+1)
