@@ -22,6 +22,7 @@
 	.link{
 		position: absolute;
 		bottom: 0;
+		width: 100%;
 		a{
 			float: left;
 			margin: 10px;
@@ -37,9 +38,12 @@
 			}
 			&.action-get-prize,
 			&.action-apply{
-				left: 0;
+				left: 50%;
 				float: none;
 				margin: 10px auto;
+			}
+			&.action-get-prize{
+				left: auto;
 			}
 		}
 	}
