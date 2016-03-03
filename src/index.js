@@ -124,25 +124,25 @@ import Create from './components/Create'
 		var start = function(){
 			var tl = new TimelineLite();
 			
-			tl.to(overlay, 0.5, {autoAlpha: 1});
+			tl.to(overlay, 0.25, {autoAlpha: 1});
 
 			tl.to(scene1, 0.5, {autoAlpha: 1});
-			tl.to(scene1.find('.txt'), 0.5, {autoAlpha: 1, y: -15}, "-=0.25");
-			tl.to(scene1, 0.5, {autoAlpha: 0}, "+=1");
+			tl.to(scene1.find('.txt'), 0.5, {autoAlpha: 1, y: -10}, "-=0.25");
+			tl.to(scene1, 1, {autoAlpha: 0}, "+=1");
 			
-			tl.to(scene2, 0.5, {autoAlpha: 1});
-			tl.to(scene2.find('.txt'), 0.5, {autoAlpha: 1, y: -15}, "-=0.25");
-			tl.to(scene2, 0.5, {autoAlpha: 0}, "+=1");
+			tl.to(scene2, 0.5, {autoAlpha: 1}, "-=0.38");
+			tl.to(scene2.find('.txt'), 0.5, {autoAlpha: 1, y: -10}, "-=0.25");
+			tl.to(scene2, 1, {autoAlpha: 0}, "+=1");
 
-			tl.to(scene3, 0.5, {autoAlpha: 1});
-			tl.to(scene3.find('.txt'), 0.5, {autoAlpha: 1, y: -15}, "-=0.25");
-			tl.to(scene3, 0.5, {autoAlpha: 0}, "+=1");
+			tl.to(scene3, 0.5, {autoAlpha: 1}, "-=0.38");
+			tl.to(scene3.find('.txt'), 0.5, {autoAlpha: 1, y: -10}, "-=0.25");
+			tl.to(scene3, 1, {autoAlpha: 0}, "+=1");
 
 			tl.to(scene4, 0.5, {autoAlpha: 1, y: -15});
-			tl.to(scene4, 0.5, {autoAlpha: 0}, "+=1");
+			tl.to(scene4, 1, {autoAlpha: 0}, "+=1");
 
 			tl.to(scene5, 0.5, {autoAlpha: 1, y: -15});
-			tl.to(scene5, 0.5, {autoAlpha: 0}, "+=1");
+			tl.to(scene5, 1, {autoAlpha: 0}, "+=1");
 
 			tl.to(overlay, 0.5, {autoAlpha: 0});
 			
