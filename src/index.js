@@ -40,6 +40,35 @@ import Create from './components/Create'
 	
 	var GOON = {};
 
+	GOON.BrowserCheck = (function(){
+		var Sys = {};
+		var ua = navigator.userAgent.toLowerCase();
+		var s;
+		(s = ua.match(/rv:([\d.]+)\) like gecko/)) ? Sys.ie = s[1] :
+		(s = ua.match(/msie ([\d.]+)/)) ? Sys.ie = s[1] :
+		(s = ua.match(/firefox\/([\d.]+)/)) ? Sys.firefox = s[1] :
+		(s = ua.match(/chrome\/([\d.]+)/)) ? Sys.chrome = s[1] :
+		(s = ua.match(/opera.([\d.]+)/)) ? Sys.opera = s[1] :
+		(s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.safari = s[1] : 0;
+
+		var init = function(){
+			if (Sys.ie){
+			    if(parseInt(Sys.ie) < 10){
+			        add();
+			    }
+			}	
+		};
+
+		var add = function (){
+		    buttonHTML = '<a style="margin:0 auto;float:none" href="http://windows.microsoft.com/zh-cn/internet-explorer/download-ie" target="_blank" class="button button-circle update" onclick="_gaq.push([\'_trackEvent\', \'ClickCount\', \'click\', \'goto_update\']);">升级浏览器！</a>';
+		    document.body.innerHTML +='<div class="alert-mask" id="alert-mask"><div class="alert-box"><img src="/images/logo.png" /><p>您的浏览器版本过低，<br>为了保证您的浏览效果，<br>建议升级浏览器后进入本公司官方网站</p>'+buttonHTML+'</div></div>';
+		}
+
+		return {
+			init: init
+		}
+	})();
+
 	GOON.Landing = (function(){
 
 		var preloadData = []
@@ -264,8 +293,6 @@ import Create from './components/Create'
 				data.area_id = 1;
 				data.address = apply.find('textarea').val();
 
-				
-
 				$.each(data, function(key, val){
 					
 					if(val === '' || !val){
@@ -290,8 +317,7 @@ import Create from './components/Create'
 			// 去领取
 			wrap.on('click', '.action-apply', function(e){
 				e.preventDefault()
-
-				//
+				
 				new Apply().render('div.apply-form')
 				Action.showPanel('apply-form')
 			})
@@ -528,6 +554,7 @@ import Create from './components/Create'
 		}
 	})();
 	
+	GOON.BrowserCheck.init();
 	GOON.Landing.init();
 	GOON.Intro.init();
 	GOON.Panel.init();
