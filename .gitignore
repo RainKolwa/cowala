@@ -1,4 +1,5 @@
 /node_modules
 /builds
+/mobile
 /src/store/config.js
 /npm-debug.log
