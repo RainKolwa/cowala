@@ -8,6 +8,7 @@ import Navigation from './components/Navigation'
 import Intro from './components/Intro'
 import Loadbox from './components/Loadbox'
 import Loader from './components/Loader'
+import Skip from './components/Skip'
 import Animal from './components/Animal'
 import Share from './components/Share'
 import Qrcode from './components/Qrcode'
@@ -32,9 +33,6 @@ import ApplyResult from './components/ApplyResult'
 	
 	// insert site-nav
 	new Navigation().render('div.site-nav');
-
-	//
-	
 
 	// use an animation frame
 	// https://github.com/kof/animation-frame/blob/master/readme.md
@@ -111,6 +109,9 @@ import ApplyResult from './components/ApplyResult'
 		};
 
 		var completeLoaderHandler = function(){
+			// 跳过动画
+			new Skip().render('body')
+
 			// 移除loading
 			loader.hide()
 
@@ -121,7 +122,12 @@ import ApplyResult from './components/ApplyResult'
 		};
 
 		var bindEvents = function(){
-			
+			$('body').on('click', '#skip', function(e){
+				e.preventDefault();
+
+				GOON.Intro.completeSkyIn();
+				$(this).remove();
+			})
 		};
 		
 		return {
@@ -179,24 +185,21 @@ import ApplyResult from './components/ApplyResult'
 
 			tl.to(overlay, 0.2, {autoAlpha: 0});
 			
-			
-			
-
 			// 星空动画
 			tl.to(bg, 5, {autoAlpha: 1,rotation: 360, scale: 1.6, transformOrigin: "50% 65%", onComplete: completeSkyIn}, "-=0.5")
 			tl.to(star, 1, {autoAlpha: 1})
 			tl.to(intro, 0, {autoAlpha: 0});
 		};
 
-		var completeTimeline = function(){
-			// 移除片头
-			//intro.remove();
-
-			
-
-		}
-
 		var completeSkyIn = function(){
+			// 移除片头
+			intro.remove()
+
+			// 移除跳过按钮
+			if($('#skip')){
+				$('#skip').remove();
+			}
+
 			// 初始化Tvc	
 			GOON.Tvc.init()
 
@@ -220,7 +223,7 @@ import ApplyResult from './components/ApplyResult'
 		return {
 			init: init,
 			start: start,
-			completeTimeline: completeTimeline
+			completeSkyIn: completeSkyIn
 		}
 
 	})();

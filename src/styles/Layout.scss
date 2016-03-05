@@ -76,6 +76,16 @@ a{
 	z-index: 2;
 }
 
+#skip{
+	position: fixed;
+	right: 10px;
+	bottom: 10px;
+	font-size: 14px;
+	color: #fff;
+	text-decoration: underline;
+	z-index: 11;
+}
+
 .message{
 	position: fixed;
 	left: 0;
