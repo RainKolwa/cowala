@@ -117,7 +117,6 @@ export function login(data){
 
 // 注销
 export function logout(){
-	// 
 	clearItem();
 }
 
@@ -187,7 +186,6 @@ export function loadUser(){
 	        "x-token": getItem('token')
 	    },
 		success: function(response){
-			// 
 			if(response.errFlg){
 				clearItem()
 			}else{
@@ -250,14 +248,9 @@ export function generateQrcode(starId){
 	        "x-token": getItem('token')
 	    },
 		success: function(response){
-			// 
 			if(response.errFlg){
 				showMessage(response.errMsg);
-				// if invalid token???
 			}else{
-				//
-				console.log(response.qrcode)
-				
 				new Qrcode(response.qrcode).render('div.share-tips-qr')
 				showPanel('share-tips-qr')
 			}
@@ -277,19 +270,20 @@ export function getPrize(){
 	        "x-token": getItem('token')
 	    },
 		success: function(response){
-			// 
 			if(response.errFlg){
 				showMessage(response.errMsg)
 			}else{
 				// 优惠券/试用装
 				new Result(response.result).render('div.star-all-collected')
 				showPanel('star-all-collected')
+
 				// 更新localStorage
 				if(getItem('star')){
 					let _star =  JSON.parse(getItem('star'));
 					_star.winning_state = response.result
 					setItem('star', JSON.stringify(_star))
 				}
+
 				// 更新甜睡神器详情
 				new Animal().render('div.star-detail')
 			}
@@ -299,7 +293,6 @@ export function getPrize(){
 
 // 提交收货信息
 export function submitApply(data) {
-	// body...
 	$.ajax({
 		url: config.api + 'users/trial_packs',
 		method: 'POST',
@@ -310,7 +303,6 @@ export function submitApply(data) {
 	        "x-token": getItem('token')
 	    },
 		success: function(response){
-			// 
 			if(response.errFlg){
 				showMessage(response.errMsg)
 			}else{
@@ -320,8 +312,12 @@ export function submitApply(data) {
 				// 更新localStorage
 				setItem('trialPack', JSON.stringify(response.trialPack));
 
+				// 更新神器详情
 				new Animal().render('div.star-detail');
-				showPanel('star-form');
+
+				// 显示提交成功信息
+				new ApplyResult().render();
+				showPanel('apply-result-form');
 			}
 		}
 	})

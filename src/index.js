@@ -17,6 +17,8 @@ import Register from './components/Register'
 import Tvc from './components/Tvc'
 import Login from './components/Login'
 import Create from './components/Create'
+import ApplyResult from './components/ApplyResult'
+
 
 //require.ensure([], () => {})
 	//const isProduction = false;
@@ -317,7 +319,7 @@ import Create from './components/Create'
 			// 去领取
 			wrap.on('click', '.action-apply', function(e){
 				e.preventDefault()
-				
+
 				new Apply().render('div.apply-form')
 				Action.showPanel('apply-form')
 			})
@@ -571,6 +573,11 @@ import Create from './components/Create'
 	// Action.showPanel('star-all-collected')
 
 	// Action.showPanel('share-tips')
+
 	// 显示试用品申请表
 	// new Apply().render('div.apply-form')
 	// Action.showPanel('apply-form')
+
+	// 显示提交成功信息
+	// new ApplyResult().render('div.apply-result-form');
+	// Action.showPanel('apply-result-form');
