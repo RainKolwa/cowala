@@ -138,8 +138,19 @@ export function register(data){
 				showMessage(first_error_message)
 			}else{
 				showMessage('注册成功！');
-				// 去登录
-				showPanel('login-form');
+
+				// 直接判定为已登录
+				setItem('token', response.access_token);
+				setItem('user', JSON.stringify(response.user));
+				if(response.star){
+					setItem('star', JSON.stringify(response.star));
+				}
+				if(response.trialPack){
+				 	setItem('trialPack', JSON.stringify(response.trialPack));
+				}
+
+				// 隐藏弹窗
+				hidePanel();
 			}
 		}
 	})
