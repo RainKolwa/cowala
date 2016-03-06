@@ -125,6 +125,7 @@ import ApplyResult from './components/ApplyResult'
 			$('body').on('click', '#skip', function(e){
 				e.preventDefault();
 
+				// 直接进入星空动画
 				GOON.Intro.completeSkyIn();
 				$(this).remove();
 			})
@@ -147,21 +148,27 @@ import ApplyResult from './components/ApplyResult'
 		var scene5;
 		var overlay;
 
+		var tl = new TimelineLite();
+
+		// bg & star 动画
+		var tl1 = new TimelineMax({
+			repeat: 1
+		});
+
 		var init = function(){
 
 			new Intro().render('div.intro')
 
-			intro = $('.intro');
 			scene1 = intro.find('.scene1');
 			scene2 = intro.find('.scene2');
 			scene3 = intro.find('.scene3');
 			scene4 = intro.find('.scene4');
 			scene5 = intro.find('.scene5');
 			overlay = intro.find('.sceneOverlay');
+
 		};
 
 		var start = function(){
-			var tl = new TimelineLite();
 			
 			tl.to(overlay, 0.25, {autoAlpha: 1});
 
@@ -192,6 +199,7 @@ import ApplyResult from './components/ApplyResult'
 		};
 
 		var completeSkyIn = function(){
+
 			// 移除片头
 			intro.remove()
 
@@ -203,21 +211,14 @@ import ApplyResult from './components/ApplyResult'
 			// 初始化Tvc	
 			GOON.Tvc.init()
 
-			// bg & star 动画
-			var bg = $('.bg');
-			var star = $('.star');
-			var tl = new TimelineMax({
-				repeat: 1
-			});
+			tl1.to(bg, 8, {left: 0, top: 0})
+			tl1.to(star, 4, {left: 0, top: 0}, "-=8")
 
-			tl.to(bg, 8, {left: 0, top: 0})
-			tl.to(star, 4, {left: 0, top: 0}, "-=8")
+			tl1.to(bg, 8, {left: "-120%", top: 0}, "+=1")
+			tl1.to(star, 4, {left: "-120%", top: 0}, "-=8")
 
-			tl.to(bg, 8, {left: "-120%", top: 0}, "+=1")
-			tl.to(star, 4, {left: "-120%", top: 0}, "-=8")
-
-			tl.to(bg, 8, {left: "-50%", top: "-90%"}, "+=1")
-			tl.to(star, 4, {left: "-50%", top: "-90%"}, "-=8")
+			tl1.to(bg, 8, {left: "-50%", top: "-90%"}, "+=1")
+			tl1.to(star, 4, {left: "-50%", top: "-90%"}, "-=8")
 		}
 
 		return {
@@ -406,15 +407,12 @@ import ApplyResult from './components/ApplyResult'
 
 				// 验证
 				$.each(data, function(key, val){
-					console.log('key:'+key)
-					console.log('val:'+val)
 					if(val === '' || !val){
 						Action.showMessage('请输入完整的信息！');
 						validateResult = false;
 						return false
 					}
 				})
-				console.log(validateResult)
 				if(validateResult){ 
 					Action.login(data)
 				}
@@ -425,7 +423,7 @@ import ApplyResult from './components/ApplyResult'
 				e.preventDefault();
 				console.log('link-to-reg button clicked...')
 
-				// insert register
+				// 初始化注册表单
 				new Register().render('div.register-form');
 
 				Action.showPanel('register-form')

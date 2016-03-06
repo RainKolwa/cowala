@@ -90,6 +90,11 @@ export function login(data){
 		data: data,
 		success: function(response){
 			if(response.errFlg){
+				if(response.errFlg === 9){
+					showMessage('请重新登录')
+					showPanel('login-form')
+					return
+				}
 				showMessage(response.errMsg)
 			}else{
 				showMessage('登录成功！');
@@ -130,6 +135,11 @@ export function register(data){
 		data: data,
 		success: function(response){
 			if(response.errFlg){
+				if(response.errFlg === 9){
+					showMessage('请重新登录')
+					showPanel('login-form')
+					return
+				}
 				let message = response.errMsg
 				let first_error = message[Object.keys(message)[0]]
 				let first_error_message = first_error[Object.keys(first_error)[0]]
@@ -166,6 +176,11 @@ export function getCaptcha(mobile){
 		data: {phone: mobile},
 		success: function(response){
 			if(response.errFlg){
+				if(response.errFlg === 9){
+					showMessage('请重新登录')
+					showPanel('login-form')
+					return
+				}
 				showMessage(response.errMsg)
 			}else{
 				showMessage('短信验证码发送成功');
@@ -187,6 +202,11 @@ export function loadUser(){
 	    },
 		success: function(response){
 			if(response.errFlg){
+				if(response.errFlg === 9){
+					showMessage('请重新登录')
+					showPanel('login-form')
+					return
+				}
 				clearItem()
 			}else{
 				setItem("user", JSON.stringify(response.user))
@@ -215,6 +235,11 @@ export function createStar(star){
 	    },
 		success: function(response){
 			if(response.errFlg){
+				if(response.errFlg === 9){
+					showMessage('请重新登录')
+					showPanel('login-form')
+					return
+				}
 				showMessage(response.errMsg);
 				// if invalid token???
 			}else{
@@ -249,6 +274,11 @@ export function generateQrcode(starId){
 	    },
 		success: function(response){
 			if(response.errFlg){
+				if(response.errFlg === 9){
+					showMessage('请重新登录')
+					showPanel('login-form')
+					return
+				}
 				showMessage(response.errMsg);
 			}else{
 				new Qrcode(response.qrcode).render('div.share-tips-qr')
@@ -271,6 +301,11 @@ export function getPrize(){
 	    },
 		success: function(response){
 			if(response.errFlg){
+				if(response.errFlg === 9){
+					showMessage('请重新登录')
+					showPanel('login-form')
+					return
+				}
 				showMessage(response.errMsg)
 			}else{
 				// 优惠券/试用装
@@ -304,6 +339,11 @@ export function submitApply(data) {
 	    },
 		success: function(response){
 			if(response.errFlg){
+				if(response.errFlg === 9){
+					showMessage('请重新登录')
+					showPanel('login-form')
+					return
+				}
 				showMessage(response.errMsg)
 			}else{
 				// 提交成功
