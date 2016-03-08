@@ -72,7 +72,7 @@ export default class Animal {
         $('.star-detail-popup .back').click(this.onHide.bind(this))
 
         // 萤火虫效果
-        var total = this.count * 10,
+        var total = (this.count === 0 ? 1 : this.count) * 10,
           container = document.getElementById('firefly'),
           w = window.innerWidth,
           h = window.innerHeight,

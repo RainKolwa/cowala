@@ -117,6 +117,9 @@ a{
 	    	background: url('../images/pet_'+$i+'_'+$n+'.png') center top no-repeat;	
 		}
 	}
+	.animal-#{$i}-0 {
+    	background: url('../images/pet_'+$i+'_1.png') center top no-repeat;	
+	}
 }
 
 
