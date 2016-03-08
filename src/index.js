@@ -39,6 +39,7 @@ import ApplyResult from './components/ApplyResult'
 	var animationFrame = new AnimationFrame();
 	
 	var GOON = {};
+	var skipped = false;
 
 	GOON.BrowserCheck = (function(){
 		var Sys = {};
@@ -115,19 +116,21 @@ import ApplyResult from './components/ApplyResult'
 			// 移除loading
 			loader.hide()
 
-			// 片头动画
-			GOON.Intro.start();
-			// GOON.Intro.completeTimeline();
-
+			if(!skipped){
+				// 片头动画
+				GOON.Intro.start()
+			}
 		};
 
 		var bindEvents = function(){
 			$('body').on('click', '#skip', function(e){
 				e.preventDefault();
+				$(this).remove();
 
 				// 直接进入星空动画
-				GOON.Intro.completeSkyIn();
-				$(this).remove();
+				GOON.Intro.startSkyIn();
+				skipped = true;
+				GOON.Intro.tl.stop()
 			})
 		};
 		
@@ -149,9 +152,10 @@ import ApplyResult from './components/ApplyResult'
 		var overlay;
 
 		var tl = new TimelineLite();
+		var tl1 = new TimelineLite();
 
 		// bg & star 动画
-		var tl1 = new TimelineMax({
+		var tl2 = new TimelineMax({
 			repeat: 1
 		});
 
@@ -169,7 +173,7 @@ import ApplyResult from './components/ApplyResult'
 		};
 
 		var start = function(){
-			
+			console.log('start..')
 			tl.to(overlay, 0.25, {autoAlpha: 1});
 
 			tl.to(scene1, 0.5, {autoAlpha: 1});
@@ -190,18 +194,22 @@ import ApplyResult from './components/ApplyResult'
 			tl.to(scene5, 0.5, {autoAlpha: 1, y: -15});
 			tl.to(scene5, 1, {autoAlpha: 0}, "+=1");
 
-			tl.to(overlay, 0.2, {autoAlpha: 0});
+			tl.to(overlay, 0.2, {autoAlpha: 0, onComplete: startSkyIn});
 			
+			
+		};
+
+		var startSkyIn = function(){
+			// 移除片头
+			intro.remove()
+
 			// 星空动画
-			tl.to(bg, 5, {autoAlpha: 1,rotation: 360, scale: 1.6, transformOrigin: "50% 65%", onComplete: completeSkyIn}, "-=0.5")
-			tl.to(star, 1, {autoAlpha: 1})
-			tl.to(intro, 0, {autoAlpha: 0});
+			tl1.to(bg, 5, {autoAlpha: 1,rotation: 360, scale: 1.6, transformOrigin: "50% 65%", onComplete: completeSkyIn}, "-=0.5")
+			tl1.to(star, 1, {autoAlpha: 1})
+			tl1.to(intro, 0, {autoAlpha: 0});
 		};
 
 		var completeSkyIn = function(){
-
-			// 移除片头
-			intro.remove()
 
 			// 移除跳过按钮
 			if($('#skip')){
@@ -211,20 +219,22 @@ import ApplyResult from './components/ApplyResult'
 			// 初始化Tvc	
 			GOON.Tvc.init()
 
-			tl1.to(bg, 8, {left: 0, top: 0})
-			tl1.to(star, 4, {left: 0, top: 0}, "-=8")
+			tl2.to(bg, 8, {left: 0, top: 0})
+			tl2.to(star, 4, {left: 0, top: 0}, "-=8")
 
-			tl1.to(bg, 8, {left: "-120%", top: 0}, "+=1")
-			tl1.to(star, 4, {left: "-120%", top: 0}, "-=8")
+			tl2.to(bg, 8, {left: "-120%", top: 0}, "+=1")
+			tl2.to(star, 4, {left: "-120%", top: 0}, "-=8")
 
-			tl1.to(bg, 8, {left: "-50%", top: "-90%"}, "+=1")
-			tl1.to(star, 4, {left: "-50%", top: "-90%"}, "-=8")
+			tl2.to(bg, 8, {left: "-50%", top: "-90%"}, "+=1")
+			tl2.to(star, 4, {left: "-50%", top: "-90%"}, "-=8")
 		}
 
 		return {
 			init: init,
 			start: start,
-			completeSkyIn: completeSkyIn
+			startSkyIn: startSkyIn,
+			completeSkyIn: completeSkyIn,
+			tl: tl
 		}
 
 	})();
