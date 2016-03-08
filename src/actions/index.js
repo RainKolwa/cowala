@@ -5,6 +5,7 @@ import Qrcode from '../components/Qrcode'
 import Result from '../components/Result'
 import Tvc from '../components/Tvc'
 import Animal from '../components/Animal'
+import ApplyResult from '../components/ApplyResult'
 
 /*
  * LocalStorage: {token: "", user: "", star: "", winning_state: "", trialPack: ""}
@@ -356,7 +357,7 @@ export function submitApply(data) {
 				new Animal().render('div.star-detail');
 
 				// 显示提交成功信息
-				new ApplyResult().render();
+				new ApplyResult().render('div.apply-result-form');
 				showPanel('apply-result-form');
 			}
 		}
