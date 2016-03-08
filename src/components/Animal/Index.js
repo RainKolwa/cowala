@@ -71,12 +71,7 @@ export default class Animal {
         // 关闭详情
         $('.star-detail-popup .back').click(this.onHide.bind(this))
 
-        // light
-        /*
-        a Pen by DIACO : twitter.com/Diaco_ml || codepen.io/MAW
-        powered by GSAP : http://www.greensock.com/
-        */
-
+        // 萤火虫效果
         var total = this.count * 10,
           container = document.getElementById('firefly'),
           w = window.innerWidth,
@@ -112,7 +107,7 @@ export default class Animal {
             },
             opacity: R(1),
             scale: R(1) + 0.5,
-            delay: R(5),
+            delay: R(1),
             onComplete: Anim,
             onCompleteParams: [elm]
           })
