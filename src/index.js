@@ -304,9 +304,9 @@ import ApplyResult from './components/ApplyResult'
 				data.recipient = apply.find('input[name=recipient]').val();
 				data.product_id = apply.find('.options .active').index() + 1;
 				data.mobile = apply.find('input[name=mobile]').val();
-				data.province_id = 1;
-				data.city_id = 1;
-				data.area_id = 1;
+				data.province_id = apply.find('.province').val();
+				data.city_id = apply.find('.city').val();
+				data.area_id = apply.find('.area').val();
 				data.address = apply.find('textarea').val();
 
 				$.each(data, function(key, val){

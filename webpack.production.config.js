@@ -69,6 +69,10 @@ module.exports = {
         },
         loaders: [
             {
+                test : "plugins/jquery/**/*.js$",  
+                loader : "imports?jQuery=jquery,$=jquery,this=>window"  
+            },
+            {
 			    test:    /\.js/,
 			    loader:  'babel',
 			    include: __dirname + '/src',
@@ -82,7 +86,7 @@ module.exports = {
 			    loader: 'html',
 			},
 			{
-			    test:   /\.(png|gif|jpe?g|svg)$/i,
+			    test:   /\.(png|gif|jpe?g|svg|json)$/i,
 			    loader: 'url?limit=10000',
 			},
         ],
