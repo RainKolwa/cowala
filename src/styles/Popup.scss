@@ -146,7 +146,7 @@
 	}
 	&.share-tips{
 		width: 807px + 40px;
-		margin-top: -1/2*664px - 1/2*40px;
+		margin-top: -1/2*694px - 1/2*40px;
 		margin-left: -1/2*807px - 1/2*40px;
 
 		.bd{
@@ -154,15 +154,16 @@
 			padding: 20px;
 			.form{
 				width: 100%;
-				height: 664px;
+				height: 694px;
 				border: 2px solid #08477e;
 				background: url(../images/panel-bg-black.jpg) center top no-repeat;
+				background-size: cover;
 			}
 		}
 	}
 	&.share-tips-qr{
 		width: 807px + 40px;
-		margin-top: -1/2*664px - 1/2*40px;
+		margin-top: -1/2*624px - 1/2*40px;
 		margin-left: -1/2*807px - 1/2*40px;
 
 		.bd{
@@ -170,7 +171,7 @@
 			padding: 20px;
 			.form{
 				width: 100%;
-				height: 664px;
+				height: 624px;
 				border: 2px solid #08477e;
 				background: url(../images/panel-bg-black.jpg) center top no-repeat;
 			}
