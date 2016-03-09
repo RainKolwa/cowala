@@ -62,9 +62,18 @@ export function showMessage(msg){
 	},1000)
 }
 
-// 验证登录
+// 鉴权
 export function checkAuth(){
 	return window.localStorage.getItem('token') ? true : false
+}
+
+
+// 鉴权失败处理
+function authFailed(){
+	localStorage.clear()
+	showMessage('请重新登录')
+	new Login().render('div.login-form')
+	showPanel('login-form')
 }
 
 // 通用验证
@@ -92,12 +101,6 @@ export function login(data){
 		data: data,
 		success: function(response){
 			if(response.errFlg){
-				if(response.errFlg === 9){
-					showMessage('请重新登录')
-					new Login().render('div.login-form')
-					showPanel('login-form')
-					return
-				}
 				showMessage(response.errMsg)
 			}else{
 				showMessage('登录成功！');
@@ -139,9 +142,7 @@ export function register(data){
 		success: function(response){
 			if(response.errFlg){
 				if(response.errFlg === 9){
-					showMessage('请重新登录')
-					new Login().render('div.login-form')
-					showPanel('login-form')
+					authFailed()
 					return
 				}
 				let message = response.errMsg
@@ -181,9 +182,7 @@ export function getCaptcha(mobile){
 		success: function(response){
 			if(response.errFlg){
 				if(response.errFlg === 9){
-					showMessage('请重新登录')
-					new Login().render('div.login-form')
-					showPanel('login-form')
+					authFailed()
 					return
 				}
 				showMessage(response.errMsg)
@@ -223,9 +222,7 @@ export function loadUser(){
 		success: function(response){
 			if(response.errFlg){
 				if(response.errFlg === 9){
-					showMessage('请重新登录')
-					new Login().render('div.login-form')
-					showPanel('login-form')
+					authFailed()
 					return
 				}
 				showMessage(response.errFlg)
@@ -258,9 +255,7 @@ export function createStar(star){
 		success: function(response){
 			if(response.errFlg){
 				if(response.errFlg === 9){
-					showMessage('请重新登录')
-					new Login().render('div.login-form')
-					showPanel('login-form')
+					authFailed()
 					return
 				}
 				showMessage(response.errMsg);
@@ -298,9 +293,7 @@ export function generateQrcode(starId){
 		success: function(response){
 			if(response.errFlg){
 				if(response.errFlg === 9){
-					showMessage('请重新登录')
-					new Login().render('div.login-form')
-					showPanel('login-form')
+					authFailed()
 					return
 				}
 				showMessage(response.errMsg);
@@ -326,9 +319,7 @@ export function getPrize(){
 		success: function(response){
 			if(response.errFlg){
 				if(response.errFlg === 9){
-					showMessage('请重新登录')
-					new Login().render('div.login-form')
-					showPanel('login-form')
+					authFailed()
 					return
 				}
 				showMessage(response.errMsg)
@@ -365,9 +356,7 @@ export function submitApply(data) {
 		success: function(response){
 			if(response.errFlg){
 				if(response.errFlg === 9){
-					showMessage('请重新登录')
-					new Login().render('div.login-form')
-					showPanel('login-form')
+					authFailed()
 					return
 				}
 				showMessage(response.errMsg)
