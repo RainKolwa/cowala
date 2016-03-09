@@ -16,9 +16,11 @@ export default class Apply {
         	$(this).addClass('active').siblings().removeClass('active')
         })
 
+        $.cxSelect.defaults.url = cityData;
         $('#cx_select').cxSelect({ 
-		  url: cityData,               // 如果服务器不支持 .json 类型文件，请将文件改为 .js 文件 
-		  selects: ['province', 'city', 'area'],  // 数组格式，请注意顺序 
+		  selects: ['province', 'city', 'area'],
+          jsonName: 'n', 
+          jsonValue: 'v',
 		  nodata: 'none' 
 		}); 
     }
