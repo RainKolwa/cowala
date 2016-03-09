@@ -149,24 +149,27 @@ a{
 	}
 }
 
+.ticket{
+	float: left;
+	width: 245px;
+	padding-top: 127px;
+	span{
+		color: #fff;
+		display: block;
+		margin: 10px auto;
+		width: 150px;
+		height: 42px;
+		line-height: 42px;
+		border-radius: 1/2 * 42px;
+		text-align: center;
+		background: #b00a0b;
+	}
+}
+
 @for $i from 1 through 2 {
 	.ticket-#{$i} {
-		float: left;
-		width: 245px;
-		padding-top: 127px;
     	background: url('../images/ticket-'+$i+'.png') center top no-repeat;
-    	span{
-    		color: #fff;
-    		display: block;
-    		margin: 10px auto;
-    		width: 150px;
-    		height: 42px;
-    		line-height: 42px;
-    		border-radius: 1/2 * 42px;
-    		text-align: center;
-    		background: #b00a0b;
-    	}
-	}
+	}	
 }
 
 .tvc{
