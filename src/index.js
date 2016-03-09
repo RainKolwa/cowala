@@ -386,8 +386,19 @@ import ApplyResult from './components/ApplyResult'
 					Action.showPanel('create-form')
 					$('.create-form .selections').slick({
 						dots: true,
-						speed: 200
+						speed: 200,
+						autoplay: true,
+						autoplaySpeed: 100
 					})
+					setTimeout(function(){
+						$('.create-form .selections').slick('unslick');
+						$('.create-form .selections').slick({
+							dots: true,
+							speed: 200,
+							autoplay: true,
+							autoplaySpeed: 2000
+						})
+					},1800)
 				}else{
 					// 去登录
 					new Login().render('div.login-form')
