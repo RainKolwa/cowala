@@ -587,8 +587,8 @@ import ApplyResult from './components/ApplyResult'
 	// Action.showPanel('share-tips')
 
 	// 显示试用品申请表
-	new Apply().render('div.apply-form')
-	Action.showPanel('apply-form')
+	// new Apply().render('div.apply-form')
+	// Action.showPanel('apply-form')
 
 	// 显示提交成功信息
 	// new ApplyResult().render('div.apply-result-form');
