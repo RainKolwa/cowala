@@ -189,6 +189,21 @@ export function getCaptcha(mobile){
 				showMessage(response.errMsg)
 			}else{
 				showMessage('短信验证码发送成功');
+
+				// 启动计时器
+				let _this = $('.action-get-captcha')
+				let leftSeconds = 60
+				let _timer = setInterval(function(){
+					leftSeconds --;
+					console.log(leftSeconds)
+					if(leftSeconds === 0){
+						console.log('true')
+						_this.text('获取验证码')
+						clearInterval(_timer);
+						return
+					}
+					_this.text(leftSeconds+'s')
+				},1000)
 			}
 		}
 	})

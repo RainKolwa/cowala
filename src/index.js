@@ -454,6 +454,9 @@ import ApplyResult from './components/ApplyResult'
 			// 获取手机验证码
 			wrap.on('click', '.action-get-captcha', function(e){
 				e.preventDefault();
+				if($(this).text().indexOf('s') > -1){
+					return
+				}
 
 				var regForm = $('.register-form'),
 					mobile = regForm.find("input[name=mobile]").val();
@@ -464,7 +467,6 @@ import ApplyResult from './components/ApplyResult'
 				}
 
 				Action.getCaptcha(mobile)
-
 			})
 
 			// 指定妈妈类型
