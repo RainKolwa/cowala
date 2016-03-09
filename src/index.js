@@ -75,10 +75,6 @@ import ApplyResult from './components/ApplyResult'
 		var preloadData = []
 
 		var init = function(){
-			// 如果曾经登录过...
-			if(window.localStorage.getItem('token')){
-				Action.loadUser()
-			}
 
 			loader.show()
 			// 渲染加载模版
@@ -214,6 +210,11 @@ import ApplyResult from './components/ApplyResult'
 			// 移除跳过按钮
 			if($('#skip')){
 				$('#skip').remove();
+			}
+
+			// 如果曾经登录过...
+			if(window.localStorage.getItem('token')){
+				Action.loadUser()
 			}
 
 			// 初始化Tvc	
@@ -586,8 +587,8 @@ import ApplyResult from './components/ApplyResult'
 	// Action.showPanel('share-tips')
 
 	// 显示试用品申请表
-	// new Apply().render('div.apply-form')
-	// Action.showPanel('apply-form')
+	new Apply().render('div.apply-form')
+	Action.showPanel('apply-form')
 
 	// 显示提交成功信息
 	// new ApplyResult().render('div.apply-result-form');

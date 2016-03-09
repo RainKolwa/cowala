@@ -6,6 +6,7 @@ import Result from '../components/Result'
 import Tvc from '../components/Tvc'
 import Animal from '../components/Animal'
 import ApplyResult from '../components/ApplyResult'
+import Login from '../components/Login'
 
 /*
  * LocalStorage: {token: "", user: "", star: "", winning_state: "", trialPack: ""}
@@ -93,6 +94,7 @@ export function login(data){
 			if(response.errFlg){
 				if(response.errFlg === 9){
 					showMessage('请重新登录')
+					new Login().render('div.login-form')
 					showPanel('login-form')
 					return
 				}
@@ -138,6 +140,7 @@ export function register(data){
 			if(response.errFlg){
 				if(response.errFlg === 9){
 					showMessage('请重新登录')
+					new Login().render('div.login-form')
 					showPanel('login-form')
 					return
 				}
@@ -179,6 +182,7 @@ export function getCaptcha(mobile){
 			if(response.errFlg){
 				if(response.errFlg === 9){
 					showMessage('请重新登录')
+					new Login().render('div.login-form')
 					showPanel('login-form')
 					return
 				}
@@ -205,9 +209,11 @@ export function loadUser(){
 			if(response.errFlg){
 				if(response.errFlg === 9){
 					showMessage('请重新登录')
+					new Login().render('div.login-form')
 					showPanel('login-form')
 					return
 				}
+				showMessage(response.errFlg)
 				clearItem()
 			}else{
 				setItem("user", JSON.stringify(response.user))
@@ -238,6 +244,7 @@ export function createStar(star){
 			if(response.errFlg){
 				if(response.errFlg === 9){
 					showMessage('请重新登录')
+					new Login().render('div.login-form')
 					showPanel('login-form')
 					return
 				}
@@ -277,6 +284,7 @@ export function generateQrcode(starId){
 			if(response.errFlg){
 				if(response.errFlg === 9){
 					showMessage('请重新登录')
+					new Login().render('div.login-form')
 					showPanel('login-form')
 					return
 				}
@@ -304,6 +312,7 @@ export function getPrize(){
 			if(response.errFlg){
 				if(response.errFlg === 9){
 					showMessage('请重新登录')
+					new Login().render('div.login-form')
 					showPanel('login-form')
 					return
 				}
@@ -342,6 +351,7 @@ export function submitApply(data) {
 			if(response.errFlg){
 				if(response.errFlg === 9){
 					showMessage('请重新登录')
+					new Login().render('div.login-form')
 					showPanel('login-form')
 					return
 				}
