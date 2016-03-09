@@ -120,6 +120,7 @@ export function login(data){
 
 				// 重新渲染Tvc
 				new Tvc().render('div.tvc');
+				$('.tvc').fadeIn();
 			}
 		}
 	})

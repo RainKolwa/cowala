@@ -18,7 +18,7 @@ import Tvc from './components/Tvc'
 import Login from './components/Login'
 import Create from './components/Create'
 import ApplyResult from './components/ApplyResult'
-
+import Rule from './components/Rule'
 
 //require.ensure([], () => {})
 	//const isProduction = false;
@@ -291,6 +291,15 @@ import ApplyResult from './components/ApplyResult'
 
 		var bindEvents = function(){
 			var wrap = $('#wrapper');
+
+			// 显示活动规则
+			wrap.on('click', '.action-show-rule', function(e){
+				e.preventDefault();
+				console.log('action-show-rule button clicked')
+
+				new Rule().render('div.rule')
+				Action.showPanel('rule')
+			})
 
 			// 提交收货信息
 			wrap.on('click', '.action-submit-apply', function(e){

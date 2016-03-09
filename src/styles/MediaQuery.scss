@@ -28,6 +28,7 @@ $rate : 1280/1920;
   	@include scale($rate)
   }
   .popup-panel{
-  	@include scale($rate)	
+  	@include scale($rate);
+    transform-origin: center center;
   }
 }

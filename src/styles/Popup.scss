@@ -177,4 +177,21 @@
 			}
 		}
 	}
+	&.rule{
+		width: 807px + 40px;
+		margin-top: -1/2*624px - 1/2*40px;
+		margin-left: -1/2*807px - 1/2*40px;
+
+		.bd{
+			background: rgba(8, 71, 126, .6);
+			padding: 20px;
+			.form{
+				width: 100%;
+				height: 624px;
+				border: 2px solid #08477e;
+				background: url(../images/panel-bg-black-2.jpg) center top no-repeat;
+				background-size: cover
+			}
+		}	
+	}
 }
