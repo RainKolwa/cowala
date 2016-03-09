@@ -59,7 +59,8 @@
 				}
 			}
 			.button{
-				margin: 0 auto;
+				margin-top: 10px;
+				float: left;
 				@include scale(.8);
 				transform-origin: center top;
 				&.action-login{
