@@ -395,8 +395,7 @@ import ApplyResult from './components/ApplyResult'
 						$('.create-form .selections').slick({
 							dots: true,
 							speed: 200,
-							autoplay: true,
-							autoplaySpeed: 2000
+							autoplay: false
 						})
 					},1800)
 				}else{
