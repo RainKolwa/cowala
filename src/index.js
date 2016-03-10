@@ -19,6 +19,7 @@ import Login from './components/Login'
 import Create from './components/Create'
 import ApplyResult from './components/ApplyResult'
 import Rule from './components/Rule'
+import Shop from './components/Shop'
 
 //require.ensure([], () => {})
 	//const isProduction = false;
@@ -291,6 +292,16 @@ import Rule from './components/Rule'
 
 		var bindEvents = function(){
 			var wrap = $('#wrapper');
+
+			// 显示门店详情
+			wrap.on('click', '.action-show-event', function(e){
+				e.preventDefault();
+				console.log('action-show-event button clicked')
+
+				new Shop().render('div.shop')
+				Action.showPanel('shop')
+			})
+
 
 			// 显示活动规则
 			wrap.on('click', '.action-show-rule', function(e){
