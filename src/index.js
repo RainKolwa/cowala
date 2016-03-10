@@ -226,14 +226,17 @@ import qrcodeLink from './images/qrcode.png'
 			// 初始化Tvc	
 			GOON.Tvc.init()
 
-			tl2.to(bg, 6, {left: 0, top: 0})
-			tl2.to(star, 6, {left: "-20%", top: 0}, "-=6")
+			setTimeout(function(){
+				tl2.to(bg, 6, {left: 0, top: 0})
+				tl2.to(star, 6, {left: "-20%", top: 0}, "-=6")
 
-			tl2.to(bg, 6, {left: "-120%", top: 0})
-			tl2.to(star, 6, {left: "-100%", top: "-80%"}, "-=6")
+				tl2.to(bg, 6, {left: "-120%", top: 0})
+				tl2.to(star, 6, {left: "-100%", top: "-80%"}, "-=6")
 
-			tl2.to(bg, 6, {left: "-50%", top: "-90%"})
-			tl2.to(star, 6, {left: "-30%", top: "-70%"}, "-=6")
+				tl2.to(bg, 6, {left: "-50%", top: "-90%"})
+				tl2.to(star, 6, {left: "-30%", top: "-70%"}, "-=6")	
+			},1500)
+			
 		}
 
 		return {
