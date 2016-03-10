@@ -112,9 +112,13 @@ import Shop from './components/Shop'
 			// 移除loading
 			loader.hide()
 
-			if(!skipped){
+			var isLogin = Action.checkAuth()
+
+			if(!skipped && !isLogin){
 				// 片头动画
 				GOON.Intro.start()
+			}else{
+				GOON.Intro.startSkyIn()
 			}
 		};
 
