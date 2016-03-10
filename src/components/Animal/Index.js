@@ -13,14 +13,14 @@ export default class Animal {
 	constructor() {
         // init
         this.star = getLocal('star')
-        this.winning_state = this.star.winning_state
+        this.winning_state = this.star ? this.star.winning_state : ""
         this.trialPack = getLocal('trialPack')
         this.hasGotPrize = false
         this.prizeIsTrialPack = false
 
         // 数据
-        this.id = this.star.star_name_id
-		this.count = this.star.star_count
+        this.id = this.star ? this.star.star_name_id : ""
+		    this.count = this.star ? this.star.star_count : ""
 
         // 状态
         this.applied = (this.winning_state === 0 && this.trialPack) ? true : false
