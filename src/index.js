@@ -311,7 +311,7 @@ import Rule from './components/Rule'
 				
 				data.user_id = Action.getLocal('user').id;
 				data.recipient = apply.find('input[name=recipient]').val();
-				data.product_id = apply.find('.options .active').index() + 1;
+				data.product_id = apply.find('.options .active').index() + 7;
 				data.mobile = apply.find('input[name=mobile]').val();
 				data.province_id = apply.find('.province').val();
 				data.city_id = apply.find('.city').val();

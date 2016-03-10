@@ -61,7 +61,7 @@ export default class Animal {
                 starCount: this.count || 0,
                 applied: this.applied,
                 trialPack: this.trialPack,
-                size: this.trialPack ? (this.trialPack.product_id-1 ? 'XL号' : 'L号') : "",
+                size: this.trialPack ? (this.trialPack.product_id-7 ? 'XL号' : 'L号') : "",
                 id: this.id
             })
         );
