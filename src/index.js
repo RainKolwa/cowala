@@ -20,6 +20,8 @@ import Create from './components/Create'
 import ApplyResult from './components/ApplyResult'
 import Rule from './components/Rule'
 import Shop from './components/Shop'
+import Qrcode from './components/Qrcode'
+import qrcodeLink from './images/qrcode.png'
 
 //require.ensure([], () => {})
 	//const isProduction = false;
@@ -218,7 +220,7 @@ import Shop from './components/Shop'
 
 			// 如果曾经登录过...
 			if(window.localStorage.getItem('token')){
-				Action.loadUser()
+				// Action.loadUser()
 			}
 
 			// 初始化Tvc	
@@ -401,31 +403,34 @@ import Shop from './components/Shop'
 			wrap.on('click', '.action-create-star', function(e){
 				e.preventDefault();
 
-				var isLogin = Action.checkAuth();
+				new Qrcode(qrcodeLink).render('div.share-tips-qr')
+				Action.showPanel('share-tips-qr')
+
+				// var isLogin = Action.checkAuth();
 				
-				if(isLogin){
-					// 去选择神器 或者 查看神器
-					new Create().render('div.create-form')
-					Action.showPanel('create-form')
-					$('.create-form .selections').slick({
-						dots: true,
-						speed: 200,
-						autoplay: true,
-						autoplaySpeed: 100
-					})
-					setTimeout(function(){
-						$('.create-form .selections').slick('unslick');
-						$('.create-form .selections').slick({
-							dots: true,
-							speed: 200,
-							autoplay: false
-						})
-					},1800)
-				}else{
-					// 去登录
-					new Login().render('div.login-form')
-					Action.showPanel('login-form')
-				}
+				// if(isLogin){
+				// 	// 去选择神器 或者 查看神器
+				// 	new Create().render('div.create-form')
+				// 	Action.showPanel('create-form')
+				// 	$('.create-form .selections').slick({
+				// 		dots: true,
+				// 		speed: 200,
+				// 		autoplay: true,
+				// 		autoplaySpeed: 100
+				// 	})
+				// 	setTimeout(function(){
+				// 		$('.create-form .selections').slick('unslick');
+				// 		$('.create-form .selections').slick({
+				// 			dots: true,
+				// 			speed: 200,
+				// 			autoplay: false
+				// 		})
+				// 	},1800)
+				// }else{
+				// 	// 去登录
+				// 	new Login().render('div.login-form')
+				// 	Action.showPanel('login-form')
+				// }
 			})
 
 			// 选择神器
