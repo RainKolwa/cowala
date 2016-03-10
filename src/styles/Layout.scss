@@ -56,7 +56,7 @@ a{
 .bg{
 	opacity: .5;
 	background: url(../images/bg.jpg) no-repeat;
-	background-size: contain;
+	background-size: cover;
 	transform: rotate(-60deg)
 }
 
@@ -64,7 +64,7 @@ a{
 	opacity: .1;
 	z-index: 2;
 	background: url(../images/star.png) no-repeat;
-	background-size: contain;
+	background-size: cover;
 }
 
 .dot {
