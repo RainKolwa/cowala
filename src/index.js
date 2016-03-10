@@ -200,7 +200,7 @@ import Shop from './components/Shop'
 			intro.remove()
 
 			// 星空动画
-			tl1.to(bg, 5, {autoAlpha: 1,rotation: 360, scale: 1.6, transformOrigin: "50% 65%", onComplete: completeSkyIn}, "-=0.5")
+			tl1.to(bg, 2, {autoAlpha: 1,rotation: 0, scale: 1.6, transformOrigin: "50% 65%", onComplete: completeSkyIn}, "-=0.5")
 			tl1.to(star, 1, {autoAlpha: 1})
 			tl1.to(intro, 0, {autoAlpha: 0});
 		};
