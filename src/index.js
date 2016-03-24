@@ -406,8 +406,10 @@ import qrcodeLink from './images/qrcode.png'
 			wrap.on('click', '.action-create-star', function(e){
 				e.preventDefault();
 
-				new Qrcode(qrcodeLink).render('div.share-tips-qr')
-				Action.showPanel('share-tips-qr')
+				alert('中奖名单将于3月31日公布，敬请期待！')
+
+				// new Qrcode(qrcodeLink).render('div.share-tips-qr')
+				// Action.showPanel('share-tips-qr')
 
 				// var isLogin = Action.checkAuth();
 				
