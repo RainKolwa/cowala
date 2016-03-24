@@ -410,32 +410,6 @@ import qrcodeLink from './images/qrcode.png'
 
 				// new Qrcode(qrcodeLink).render('div.share-tips-qr')
 				// Action.showPanel('share-tips-qr')
-
-				// var isLogin = Action.checkAuth();
-				
-				// if(isLogin){
-				// 	// 去选择神器 或者 查看神器
-				// 	new Create().render('div.create-form')
-				// 	Action.showPanel('create-form')
-				// 	$('.create-form .selections').slick({
-				// 		dots: true,
-				// 		speed: 200,
-				// 		autoplay: true,
-				// 		autoplaySpeed: 100
-				// 	})
-				// 	setTimeout(function(){
-				// 		$('.create-form .selections').slick('unslick');
-				// 		$('.create-form .selections').slick({
-				// 			dots: true,
-				// 			speed: 200,
-				// 			autoplay: false
-				// 		})
-				// 	},1800)
-				// }else{
-				// 	// 去登录
-				// 	new Login().render('div.login-form')
-				// 	Action.showPanel('login-form')
-				// }
 			})
 
 			// 选择神器
@@ -617,24 +591,3 @@ import qrcodeLink from './images/qrcode.png'
 	GOON.Landing.init();
 	GOON.Intro.init();
 	GOON.Panel.init();
-
-
-	// test
-	
-	// show share tip panel;
-	// new Share(JSON.parse(window.localStorage.getItem('star'))).render('div.share-tips')
-	// Action.showPanel('share-tips')
-
-	// test get prize， 0=>试用 1=>优惠
-	// new Result(1).render('div.star-all-collected')
-	// Action.showPanel('star-all-collected')
-
-	// Action.showPanel('share-tips')
-
-	// 显示试用品申请表
-	// new Apply().render('div.apply-form')
-	// Action.showPanel('apply-form')
-
-	// 显示提交成功信息
-	// new ApplyResult().render('div.apply-result-form');
-	// Action.showPanel('apply-result-form');
